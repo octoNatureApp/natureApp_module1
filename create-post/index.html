@@ -34,6 +34,8 @@
     </head>
     <body>
         <main>
+            <h1>New Post</h1>
+            <p>ALL FIELDS ARE REQUIRED</p>
             <form id="create-post-form">
                 <label>
                     image
@@ -45,12 +47,17 @@
                     alt="photo preview"
                     src="/assets/nature place holder.png"
                 />
-                <label> Alt text<textarea required name="alt-text" id="alt-text"></textarea></label>
                 <label>
-                    *Location
-                    <textarea name="location" required placeholder="Add the location">
-* required</textarea
-                    >
+                    Alt text<textarea
+                        required
+                        name="alt-text"
+                        id="alt-text"
+                        placeholder="add alternative text"
+                    ></textarea>
+                </label>
+                <label>
+                    Location
+                    <textarea name="location" required placeholder="Add the location"></textarea>
                 </label>
                 <label>
                     Description
@@ -62,10 +69,12 @@
                         maxlength="100"
                         cols="30"
                         rows="10"
+                        placeholder="Add a description"
                     ></textarea>
                 </label>
             </form>
             <button type="submit">POST</button>
+            <p id="error-display"></p>
         </main>
     </body>
 </html>
