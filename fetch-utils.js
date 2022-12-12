@@ -1,3 +1,5 @@
+import { func } from 'prop-types';
+
 const SUPABASE_URL = 'https://fypohquqpythfovrkjgk.supabase.co';
 const SUPABASE_KEY =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ5cG9ocXVxcHl0aGZvdnJramdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA2MjY4NDksImV4cCI6MTk4NjIwMjg0OX0.4Mlgn-_lxcrVewpthtLz6HwNQsKnSFWym3b80u1bLNs';
@@ -32,6 +34,31 @@ export async function signOutUser() {
 export async function getProfiles() {
     const response = await client.from('profiles').select('*');
     return checkError(response);
+}
+//create-profile functions
+export async function upsertProfile(profile) {
+    const response = await client
+        .from('profiles')
+        .upsert(profile, { onConflict: 'user_id' })
+        .single();
+    return checkError(response);
+}
+
+export async function uploadImage(imagePath, imageFile) {
+    const bucket = client.storage.from('avatars');
+    const response = await bucket.upload(imagePath, imageFile, {
+        cacheControl: '3600',
+        upsert: true,
+    });
+    if (response.error) {
+        return null;
+    }
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
+    return null;
+}
+export async function getProfile(user_id) {
+    const response = await client.from('profiles').select('*').match({ user_id }).maybeSingle();
+    return response;
 }
 
 // error handling
