@@ -28,3 +28,13 @@ export async function signOutUser() {
 }
 
 /* Data functions */
+// get profiles from Supabase
+export async function getProfiles() {
+    const response = await client.from('profiles').select('*');
+    return checkError(response);
+}
+
+// error handling
+function checkError(response) {
+    return response.error ? console.error(response.error) : response.data;
+}
