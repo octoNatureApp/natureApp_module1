@@ -32,5 +32,40 @@
 
         <!-- add link for page specific css -->
     </head>
-    <body></body>
+    <body>
+        <main>
+            <form id="create-post-form">
+                <label>
+                    image
+                    <input type="file" name="nature" placeholder="upload an image" />
+                </label>
+                <img
+                    id="preview"
+                    class="nature"
+                    alt="photo preview"
+                    src="/assets/nature place holder.png"
+                />
+                <label> Alt text<textarea required name="alt-text" id="alt-text"></textarea></label>
+                <label>
+                    *Location
+                    <textarea name="location" required placeholder="Add the location">
+* required</textarea
+                    >
+                </label>
+                <label>
+                    Description
+                    <textarea
+                        required
+                        name="description"
+                        id="description"
+                        minlength="5"
+                        maxlength="100"
+                        cols="30"
+                        rows="10"
+                    ></textarea>
+                </label>
+            </form>
+            <button type="submit">POST</button>
+        </main>
+    </body>
 </html>
