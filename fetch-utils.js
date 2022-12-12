@@ -42,6 +42,13 @@ export async function upsertProfile(profile) {
     return checkError(response);
 }
 
+// can update or insert post
+export async function upsertPost(post) {
+    // Possible future bug? onConflict: 'user_id' or 'id'?
+    const response = await client.from('posts').upsert(post, { onConflict: 'id' }).single();
+    return checkError(response);
+}
+
 export async function uploadImage(imagePath, imageFile) {
     const bucket = client.storage.from('avatars');
     const response = await bucket.upload(imagePath, imageFile, {
@@ -54,6 +61,21 @@ export async function uploadImage(imagePath, imageFile) {
     const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
     return url;
 }
+
+// upload nature pics to Supabase
+export async function uploadNaturePic(imagePath, imageFile) {
+    const bucket = client.storage.from('naturepics');
+    const response = await bucket.upload(imagePath, imageFile, {
+        cacheControl: '3600',
+        upsert: true,
+    });
+    if (response.error) {
+        return null;
+    }
+    const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
+    return url;
+}
+
 export async function getProfile(user_id) {
     const response = await client.from('profiles').select('*').match({ user_id }).maybeSingle();
     return response;
