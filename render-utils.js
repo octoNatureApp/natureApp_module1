@@ -17,7 +17,7 @@ export function renderProfile(profile) {
 
     // images
     // polaroid photo
-    img.src = profile.naturepic_url;
+    // img.src = profile.naturepic_url;
     // leave blank so it is replaced with user submitted alt text
     img.alt = '';
     // avatar
@@ -28,7 +28,7 @@ export function renderProfile(profile) {
     p.textContent = `${profile.username}`;
 
     // append
-    div.append(img, img2, p);
+    div.append(img2, p);
 
     // return
     return div;

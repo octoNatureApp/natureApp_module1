@@ -1,5 +1,3 @@
-import { func } from 'prop-types';
-
 const SUPABASE_URL = 'https://fypohquqpythfovrkjgk.supabase.co';
 const SUPABASE_KEY =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ5cG9ocXVxcHl0aGZvdnJramdrIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzA2MjY4NDksImV4cCI6MTk4NjIwMjg0OX0.4Mlgn-_lxcrVewpthtLz6HwNQsKnSFWym3b80u1bLNs';
@@ -54,7 +52,7 @@ export async function uploadImage(imagePath, imageFile) {
         return null;
     }
     const url = `${SUPABASE_URL}/storage/v1/object/public/${response.data.Key}`;
-    return null;
+    return url;
 }
 export async function getProfile(user_id) {
     const response = await client.from('profiles').select('*').match({ user_id }).maybeSingle();

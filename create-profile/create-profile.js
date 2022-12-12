@@ -61,6 +61,7 @@ profileForm.addEventListener('submit', async (e) => {
     if (imageFile.size) {
         const imagePath = `${user.id}/${imageFile.name}`;
         const url = await uploadImage(imagePath, imageFile);
+        console.log('url', url);
 
         profileObj.avatar_url = url;
     }
@@ -83,10 +84,8 @@ profileForm.addEventListener('submit', async (e) => {
 // avatar preview and update
 avatarInput.addEventListener('change', () => {
     const file = avatarInput.files[0];
-    const booger = URL.createObjectURL(file);
-    console.log('booger', booger);
     if (file) {
-        // preview.src = URL.createObjectURL(file);
+        preview.src = URL.createObjectURL(file);
     } else {
         preview.src = '/assets/avatar.png';
     }
