@@ -32,5 +32,42 @@
 
         <!-- add link for page specific css -->
     </head>
-    <body></body>
+    <body>
+        <main>
+            <form id="profile-form">
+                <label>
+                    Avatar
+                    <input type="file" name="avatar" placeholder="upload a file" />
+                </label>
+                <img
+                    id="preview"
+                    class="avatar-preview"
+                    alt="avatar preview"
+                    src="/assets/avatar.png"
+                />
+                <label>
+                    username
+                    <input
+                        name="username"
+                        minlength="3"
+                        required
+                        placeholder="Choose a
+                    username"
+                    />
+                </label>
+                <label>
+                    Headline
+                    <input
+                        name="headline"
+                        type="text"
+                        maxlength="60"
+                        required
+                        placeholder="max count 60"
+                    />
+                </label>
+                <button type="submit">Update Profile</button>
+                <p id="error-display"></p>
+            </form>
+        </main>
+    </body>
 </html>
