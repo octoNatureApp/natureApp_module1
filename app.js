@@ -1,14 +1,14 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { getProfiles } from './fetch-utils.js';
+import { getProfiles, getUser } from './fetch-utils.js';
 import { renderProfile } from './render-utils.js';
 
 /* Get DOM Elements */
 const containerEl = document.getElementById('profiles-container');
-
+const profileFeed = document.querySelector('[href="./profile-feed]');
 /* State */
-
+const user = getUser();
 /* Events */
 window.addEventListener('load', async () => {
     displayProfiles();
@@ -26,3 +26,7 @@ async function displayProfiles() {
         containerEl.append(profileEl);
     }
 }
+
+profileFeed.addEventListener('click', async () => {
+    profileFeed.href = `/profile-feed/?id=${user.id}`;
+});
