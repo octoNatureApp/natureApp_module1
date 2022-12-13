@@ -1,32 +1,23 @@
 import '../auth/user.js';
-import { getProfile, getUser } from '../fetch-utils.js';
+import { getProfile, getUser, getPosts, getProfileById } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
-// profile avatar image
+const postSectionsEl = document.querySelector('.posts-section');
+const profileInfoEl = document.querySelector('.profile-info-section')
 const avatarImgEl = document.querySelector('#avatar-img');
-// username of clicked profile
 const usernameHeaderEl = document.querySelector('.username-header');
-// headline of clicked profile
 const headlineHeaderEl = document.querySelector('.headline-header');
-// Card image from create post
 const postCardImgEl = document.querySelector('.post-card-img');
-// Messages for posts
 const messageFeedEl = document.querySelector('Messages-for-post');
-// creating likes on profile instead of posts
-// const profileLikesEl = document.querySelector('.profile-likes');
-
-// location of post img
 const postLocationEl = document.querySelector('.post-location');
-//  description of post img
 const postDescriptionEl = document.querySelector('.post-description');
-// distinguish between usernames when someone sends message
-// const senderUsernameEl = document.querySelector('.username');
-// how and where people send messages
-const messageForm = document.querySelector('.message-form');
+// const messageForm = document.querySelector('.message-form');
+
 
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
+
 
 window.addEventListener('load', async () => {
     // error handling
@@ -37,6 +28,7 @@ window.addEventListener('load', async () => {
         return;
     }
     displayProfile();
+    displayPosts();
 });
 
 // onmessage(id, async (payload) => {
@@ -67,8 +59,22 @@ window.addEventListener('load', async () => {
 //display function
 
 async function displayProfile() {
-    const profile = await getProfile(id);
+    const profile = await getProfileById(id);
     avatarImgEl.src = profile.avatar_url;
     usernameHeaderEl.textContent = profile.username;
     headlineHeaderEl.textContent = profile.headline;
+
+
+}
+
+async function displayPosts() {
+    postSectionsEl.textContent = '';
+    const posts = await getPosts(id);
+
+    for (let post of posts) {
+        const postEl = renderPost(post);
+        postSectionsEl.append(postEl);
+    }
+
+
 }
