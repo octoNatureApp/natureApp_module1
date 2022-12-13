@@ -1,7 +1,6 @@
 import '../auth/user.js';
 import { getProfile, getUser } from '../fetch-utils.js';
-
-
+import { renderPost } from '../render-utils.js';
 
 // profile avatar image
 const avatarImgEl = document.querySelector('#avatar-img');
@@ -11,9 +10,9 @@ const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
 // Card image from create post
 const postCardImgEl = document.querySelector('.post-card-img');
-// Messages for posts 
+// Messages for posts
 const messageFeedEl = document.querySelector('Messages-for-post');
-// creating likes on profile instead of posts 
+// creating likes on profile instead of posts
 // const profileLikesEl = document.querySelector('.profile-likes');
 
 // location of post img
@@ -29,16 +28,15 @@ const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
 
-
 window.addEventListener('load', async () => {
     // error handling
     if (!id) {
         // no id found, redirect back to room list
-        location.assign('/');
+        // location.assign('/');
         // don't run the rest of the cod in function
         return;
     }
-    // displayProfile();
+    displayProfile();
 });
 
 // onmessage(id, async (payload) => {
@@ -65,3 +63,12 @@ window.addEventListener('load', async () => {
 //         messageForm.reset();
 //     }
 // });
+
+//display function
+
+async function displayProfile() {
+    const profile = await getProfile(id);
+    avatarImgEl.src = profile.avatar_url;
+    usernameHeaderEl.textContent = profile.username;
+    headlineHeaderEl.textContent = profile.headline;
+}
