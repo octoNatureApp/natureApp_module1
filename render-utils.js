@@ -1,7 +1,7 @@
 // render profile on home page
 export function renderProfile(profile) {
-    // container and elements
-    const div = document.createElement('div');
+    // container and elements and link
+    const a = document.createElement('a');
     // post photo
     const img = document.createElement('img');
     // avatar
@@ -9,11 +9,14 @@ export function renderProfile(profile) {
     // username
     const p = document.createElement('p');
 
+
+
     // class lists
-    div.classList.add('profile-container');
+    a.classList.add('profile-container');
     img.classList.add('polaroid');
     img2.classList.add('avatar');
     p.classList.add('username');
+
 
     // images
     // polaroid photo
@@ -26,12 +29,13 @@ export function renderProfile(profile) {
 
     // text content
     p.textContent = `${profile.username}`;
+    a.href = `../profile-feed/?id=${profile.id}`;
 
     // append
-    div.append(img2, p);
+    a.append(img2, p);
 
     // return
-    return div;
+    return a;
 }
 
 export function renderPost(postObject) {
