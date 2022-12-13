@@ -33,3 +33,23 @@ export function renderProfile(profile) {
     // return
     return div;
 }
+
+export function renderPost(postObject) {
+    const div = document.createElement('div');
+    const img = document.createElement('img');
+    const p = document.createElement('p');
+    const p1 = document.createElement('p');
+
+    div.classList.add('post-list');
+    img.classList.add('naturepic');
+    p.classList.add('location');
+    p1.classList.add('description');
+
+    img.src = postObject.naturepic_url;
+    img.alt = '';
+    p.textContent = postObject.location;
+    p1.textContent = postObject.description;
+
+    div.append(img, p, p1);
+    return div;
+}
