@@ -1,5 +1,5 @@
 import '../auth/user.js';
-import { getProfile } from '../fetch-utils.js';
+import { getProfile, getUser } from '../fetch-utils.js';
 
 
 
@@ -21,9 +21,9 @@ const postLocationEl = document.querySelector('.post-location');
 //  description of post img
 const postDescriptionEl = document.querySelector('.post-description');
 // distinguish between usernames when someone sends message
-const senderUsernameEl = document.querySelector('.username');
+// const senderUsernameEl = document.querySelector('.username');
 // how and where people send messages
-const MessageForm = document.querySelector('.Message-form');
+const messageForm = document.querySelector('.message-form');
 
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
@@ -38,7 +38,7 @@ window.addEventListener('load', async () => {
         // don't run the rest of the cod in function
         return;
     }
-    DisplayProfile();
+    // displayProfile();
 });
 
 // onmessage(id, async (payload) => {

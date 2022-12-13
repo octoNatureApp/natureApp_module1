@@ -43,32 +43,34 @@
             <a id="sign-out-link" href="../auth/">Sign Out</a>
         </nav>
     </header>
-    <main>
+    <!-- main class is for css -->
+    <main class="profile-feed-page">
+        <!-- this section is for profile user info -->
         <section class="profile-info-section">
-            <div class="profile-header">
-                <img id="avatar-img" class="avatar" src="/assets/avatar.png" />
-                <h2 class="username-header"></h2>
-                <h2 class="headline-header"></h2>
-            </div>
+            <!-- <div>this div would be if we wanted to have profile likes and want to style the likes-->
+            <img id="avatar-img" class="avatar" src="/assets/avatar.png" />
+            <h1 class="username-header"></h1>
+            <h2 class="headline-header"></h2>
             <!-- if we create likes on profile page instead of each post -->
-            <!-- <div class="profile-likes"></div> -->
+            <!-- <div class="profile-popularity"></div> -->
         </section>
+        <!-- this section is for posts and message section -->
         <section class="post-and-message-section">
-            <div class="post-card-img"></div>
+            <img id="post-card-img" class="post-img" src=""></img>
             <div class="post-location"></div>
             <div class="post-description"></div>
-
-            <section class="message-section">
-                <form class="message-form">
-                    <label>
-                        <p>Comment on this post</p>
-                        <input name="message" />
-                    </label>
-                    <button type="submit">Post Comment</button>
-                    <h3 class="messages-for-post"></h3>
-                </form>
-                <div class="messages"></div>
-            </section>
+        </section>
+        <section class="messages-section">
+            <form class="message-form">
+                <label>
+                    <p>Comment on this post</p>
+                    <input name="message" />
+                </label>
+                <button type="submit">Post Comment</button>
+                <h3 class="messages-for-post"></h3>
+            </form>
+            <div class="post-messages"></div>
+        </section>
         </section>
 
 
