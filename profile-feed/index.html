@@ -1,36 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- metadata -->
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-        <!-- title and favicon -->
-        <title>NatureApp</title>
-        <link rel="icon" type="image/x-icon" href="/assets/nature-app-favicon.png" />
+<head>
+    <!-- metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-        <!-- js -->
-        <script
-            defer
-            src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
-        ></script>
-        <script type="module" src="profile-feed.js"></script>
+    <!-- title and favicon -->
+    <title>NatureApp</title>
+    <link rel="icon" type="image/x-icon" href="/assets/nature-app-favicon.png" />
 
-        <!-- fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap"
-        />
+    <!-- js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"></script>
+    <script type="module" src="create-profile.js"></script>
 
-        <!-- css -->
-        <link rel="stylesheet" href="/styles/reset.css" />
-        <link rel="stylesheet" href="/styles/global.css" />
-        <link rel="stylesheet" href="./profile-feed.css" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap" />
 
-        <!-- add link for page specific css -->
-    </head>
-    <body></body>
+    <!-- css -->
+    <link rel="stylesheet" href="/styles/reset.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="./create-profile.css" />
+
+    <!-- add link for page specific css -->
+</head>
+
+<body>
+    <header class="page-header">
+        <img class="logo" src="/assets/html_css_js.png" alt="logo" />
+        <!-- Add a span and render specific user's profile name -->
+        <p class="title">Profile</p>
+        <nav class="left-nav">
+            <a href="../">Home</a>
+            <a href="../create-post/">Create Post</a>
+            <a href="../create-profile/">Edit Profile</a>
+        </nav>
+        <nav class="right-nav">
+            <a id="sign-out-link" href="../auth/">Sign Out</a>
+        </nav>
+    </header>
+    <!-- main class is for css -->
+    <main class="profile-feed-page">
+        <!-- this section is for profile user info -->
+        <section class="profile-info-section">
+            <!-- <div>this div would be if we wanted to have profile likes and want to style the likes-->
+            <img id="avatar-img" class="avatar" src="/assets/avatar.png" />
+            <h1 class="username-header"></h1>
+            <h2 class="headline-header"></h2>
+            <!-- if we create likes on profile page instead of each post -->
+            <!-- <div class="profile-popularity"></div> -->
+        </section>
+        <!-- this section is for posts and message section -->
+        <section class="post-and-message-section">
+            <img id="post-card-img" class="post-img" src=""></img>
+            <div class="post-location"></div>
+            <div class="post-description"></div>
+        </section>
+        <section class="messages-section">
+            <form class="message-form">
+                <label>
+                    <p>Comment on this post</p>
+                    <input name="message" />
+                </label>
+                <button type="submit">Post Comment</button>
+                <h3 class="messages-for-post"></h3>
+            </form>
+            <div class="post-messages"></div>
+        </section>
+        </section>
+
+
+
+
+
+
+
+    </main>
+</body>
+
 </html>
