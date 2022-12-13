@@ -7,6 +7,7 @@ const errorDisplay = document.getElementById('error-display');
 const preview = document.getElementById('preview');
 const postForm = document.getElementById('create-post-form');
 const updateButton = postForm.querySelector('button');
+const natureInput = postForm.querySelector('[name=nature]');
 const altTextInput = postForm.querySelector('[name=alt-text]');
 const locationInput = postForm.querySelector('[name=location]');
 const descriptionInput = postForm.querySelector('[name=description]');
@@ -65,3 +66,11 @@ postForm.addEventListener('submit', async (e) => {
 });
 
 // photo preview and update
+natureInput.addEventListener('change', () => {
+    const file = natureInput.files[0];
+    if (file) {
+        preview.src = URL.createObjectURL(file);
+    } else {
+        preview.src = '/assets/nature place holder.png';
+    }
+});
