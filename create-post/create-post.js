@@ -60,6 +60,8 @@ postForm.addEventListener('submit', async (e) => {
         updateButton.disabled = false;
         updateButton.textContent = 'POST';
     } else {
-        location.assign('./profile-feed/');
+        location.assign('/profile-feed');
     }
 });
+
+// photo preview and update
