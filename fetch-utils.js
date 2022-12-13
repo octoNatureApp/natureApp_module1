@@ -87,6 +87,11 @@ export async function getProfile(user_id) {
     return response;
 }
 
+export async function getProfileById(id) {
+    const response = await client.from('profiles').select('*').match({ id }).single();
+    return checkError(response);
+}
+
 export async function deletePost(id) {
     const response = await client.from('posts').delete().match({ id }).single();
     return checkError(response);
