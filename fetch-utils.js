@@ -50,8 +50,9 @@ export async function upsertPost(post) {
 }
 
 // get post from Supabase
-export async function getPost(post, id) {
-    const response = await client.from('posts').select('*').match({ post: id });
+export async function getPosts(profile_id) {
+    const response = await client.from('posts').select('*').match({ profile_id });
+    return checkError(response);
 }
 
 export async function uploadImage(imagePath, imageFile) {
@@ -84,6 +85,17 @@ export async function uploadNaturePic(imagePath, imageFile) {
 export async function getProfile(user_id) {
     const response = await client.from('profiles').select('*').match({ user_id }).maybeSingle();
     return response;
+}
+
+export async function deletePost(id) {
+    const response = await client.from('posts').delete().match({ id }).single();
+    return checkError(response);
+}
+
+export function redirectIfNoProfile(profile) {
+    if (!profile) {
+        location.replace('../create-profile');
+    }
 }
 
 // error handling
