@@ -1,6 +1,6 @@
 // import
 
-import { getUser, uploadNaturePic, upsertPost } from '../fetch-utils.js';
+import { getPost, getUser, uploadNaturePic, upsertPost } from '../fetch-utils.js';
 
 // get DOM elements
 const errorDisplay = document.getElementById('error-display');
@@ -19,19 +19,23 @@ let post = null;
 
 const user = getUser();
 
-console.log('postForm', postForm);
+// page load event listener
+// STRETCH: if we want users to edit their post
+// window.addEventListener('load', async () => {
+//     const response = await getPost(user.id);
+//     error = response.error;
+//     post = response.data;
+// });
 
 // display
 // post form submit button event listener
 postForm.addEventListener('submit', async (e) => {
-    console.log('hello!');
     e.preventDefault();
 
     updateButton.disabled = true;
     updateButton.textContent = 'Posting...';
 
     const formData = new FormData(postForm);
-    console.log('formData', formData);
 
     // object: altText, location, description
     const postObj = {
@@ -52,7 +56,6 @@ postForm.addEventListener('submit', async (e) => {
 
     // upsert
     const response = await upsertPost(postObj);
-    console.log('response', response);
 
     error = response.error;
 

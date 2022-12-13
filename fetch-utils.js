@@ -49,6 +49,11 @@ export async function upsertPost(post) {
     return checkError(response);
 }
 
+// get post from Supabase
+export async function getPost(post, id) {
+    const response = await client.from('posts').select('*').match({ post: id });
+}
+
 export async function uploadImage(imagePath, imageFile) {
     const bucket = client.storage.from('avatars');
     const response = await bucket.upload(imagePath, imageFile, {
