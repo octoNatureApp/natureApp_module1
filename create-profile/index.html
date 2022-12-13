@@ -15,7 +15,7 @@
             defer
             src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
         ></script>
-        <script type="module" src="app.js"></script>
+        <script type="module" src="create-profile.js"></script>
 
         <!-- fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,28 +28,56 @@
         <!-- css -->
         <link rel="stylesheet" href="/styles/reset.css" />
         <link rel="stylesheet" href="/styles/global.css" />
+        <link rel="stylesheet" href="./create-profile.css" />
+
         <!-- add link for page specific css -->
     </head>
-
     <body>
         <header class="page-header">
             <img class="logo" src="/assets/html_css_js.png" alt="logo" />
             <p class="title"></p>
             <nav class="left-nav">
-                <a href="./create-profile/">EDIT PROFILE</a>
-                <a href="./create-post/">CREATE A POST</a>
+                <a href="../">Home</a>
             </nav>
             <nav class="right-nav">
-                <a id="sign-out-link" href="auth">Sign Out</a>
+                <a id="sign-out-link" href="../auth/">Sign Out</a>
             </nav>
         </header>
-
         <main>
-            <div class="search-bar">
-                <input type="text" placeholder="search" />
-                <button>🔍</button>
-            </div>
-            <ul id="profiles-container"></ul>
+            <form id="profile-form">
+                <label>
+                    Avatar
+                    <input type="file" name="avatar" placeholder="upload a file" />
+                </label>
+                <img
+                    id="preview"
+                    class="avatar-preview"
+                    alt="avatar preview"
+                    src="/assets/avatar.png"
+                />
+                <label>
+                    username
+                    <input
+                        name="username"
+                        minlength="3"
+                        required
+                        placeholder="Choose a
+                    username"
+                    />
+                </label>
+                <label>
+                    Headline
+                    <input
+                        name="headline"
+                        type="text"
+                        maxlength="60"
+                        required
+                        placeholder="max count 60"
+                    />
+                </label>
+                <button type="submit">Update Profile</button>
+                <p id="error-display"></p>
+            </form>
         </main>
     </body>
 </html>

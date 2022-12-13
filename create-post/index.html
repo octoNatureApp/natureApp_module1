@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <!-- title and favicon -->
+        <title>NatureApp</title>
+        <link rel="icon" type="image/x-icon" href="/assets/nature-app-favicon.png" />
+
+        <!-- js -->
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
+        ></script>
+        <script type="module" src="create-post.js"></script>
+
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap"
+        />
+
+        <!-- css -->
+        <link rel="stylesheet" href="/styles/reset.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <link rel="stylesheet" href="./create-post.css" />
+
+        <!-- add link for page specific css -->
+    </head>
+    <body>
+        <main>
+            <h1>New Post</h1>
+            <p>ALL FIELDS ARE REQUIRED</p>
+            <form id="create-post-form">
+                <label>
+                    image
+                    <input type="file" name="nature" placeholder="upload an image" />
+                </label>
+                <img
+                    id="preview"
+                    class="nature"
+                    alt="photo preview"
+                    src="/assets/nature place holder.png"
+                    style="height: 300px"
+                />
+                <label>
+                    Alt text<textarea
+                        required
+                        name="alt-text"
+                        id="alt-text"
+                        placeholder="add alternative text"
+                    ></textarea>
+                </label>
+                <label>
+                    Location
+                    <textarea name="location" required placeholder="Add the location"></textarea>
+                </label>
+                <label>
+                    Description
+                    <textarea
+                        required
+                        name="description"
+                        id="description"
+                        minlength="5"
+                        maxlength="100"
+                        cols="30"
+                        rows="10"
+                        placeholder="Add a description"
+                    ></textarea>
+                </label>
+            </form>
+            <button type="submit">POST</button>
+            <p id="error-display"></p>
+        </main>
+    </body>
+</html>
