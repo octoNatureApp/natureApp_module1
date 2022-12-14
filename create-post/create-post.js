@@ -1,6 +1,6 @@
 // import
 
-import { getPost, getUser, uploadNaturePic, upsertPost } from '../fetch-utils.js';
+import { getProfile, getUser, uploadNaturePic, upsertPost } from '../fetch-utils.js';
 
 // get DOM elements
 const errorDisplay = document.getElementById('error-display');
@@ -36,12 +36,15 @@ postForm.addEventListener('submit', async (e) => {
     updateButton.textContent = 'Posting...';
 
     const formData = new FormData(postForm);
+    const profile = await getProfile(user.id);
+    console.log('profile', profile);
 
     // object: altText, location, description
     const postObj = {
         alt_text: formData.get('alt-text'),
         location: formData.get('location'),
         description: formData.get('description'),
+        profile_id: profile.data.id
     };
 
     // get image file from form
@@ -64,9 +67,12 @@ postForm.addEventListener('submit', async (e) => {
         updateButton.disabled = false;
         updateButton.textContent = 'POST';
     } else {
-        location.assign('/profile-feed');
+
+        location.assign(`/profile-feed/?id=${profile.data.id}`);
     }
 });
+
+
 
 // photo preview and update
 natureInput.addEventListener('change', () => {

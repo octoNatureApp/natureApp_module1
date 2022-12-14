@@ -1,5 +1,5 @@
 import '../auth/user.js';
-import { getProfile, getUser, getPosts, getProfileById } from '../fetch-utils.js';
+import { getUser, getPosts, getProfileById, deletePost } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
@@ -7,12 +7,8 @@ const profileInfoEl = document.querySelector('.profile-info-section');
 const avatarImgEl = document.querySelector('#avatar-img');
 const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
-const postCardImgEl = document.querySelector('.post-card-img');
-const messageFeedEl = document.querySelector('Messages-for-post');
-const postLocationEl = document.querySelector('.post-location');
-const postDescriptionEl = document.querySelector('.post-description');
-// const messageForm = document.querySelector('.message-form');
 
+const messageFeedEl = document.querySelector('Messages-for-post');
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
@@ -69,6 +65,9 @@ async function displayPosts() {
 
     for (let post of posts) {
         const postEl = renderPost(post);
+        // delete post button
+        // const deleteButton = await deletePost(id);
+        // postEl.append(deleteButton);
         postSectionsEl.append(postEl);
     }
 }
