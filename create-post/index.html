@@ -35,19 +35,17 @@
     <body>
         <header class="page-header">
             <!-- Add a span and render specific user's profile name -->
-            <p class="title">Profile</p>
+            <p class="title" style="color: white">Create your post!</p>
             <nav class="left-nav">
-                <a href="../">Home</a>
-                <a href="../create-profile/">Edit Profile</a>
+                <a href="../"><img src="../assets/home.png" /></a>
+                <a href="../create-profile/"><img src="../assets/edit-profile.png" /></a>
             </nav>
             <nav class="right-nav">
-                <a id="sign-out-link" href="../auth/">Sign Out</a>
+                <a id="sign-out-link" href="../auth/"><img src="../assets/logout.png" /></a>
             </nav>
         </header>
 
         <main>
-            <h1>New Post</h1>
-            <p>ALL FIELDS ARE REQUIRED</p>
             <form id="create-post-form">
                 <label>
                     image
@@ -58,7 +56,6 @@
                     class="nature"
                     alt="photo preview"
                     src="/assets/nature place holder.png"
-                    style="height: 300px"
                 />
                 <label>
                     Alt text<textarea
