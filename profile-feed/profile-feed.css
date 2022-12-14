@@ -11,6 +11,13 @@ body {
     align-items: center;
     min-width: 320px;
 }
+.profile-info-section {
+    padding: 0px;
+    border-radius: 4px;
+    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    justify-content: center;
+    align-items: center;
+}
 .section {
     display: flex;
     flex-direction: row;
@@ -36,7 +43,7 @@ body {
     display: grid;
     grid-template-columns: auto auto auto auto;
     gap: 16px;
-    border-radius: 10%;
+    border-radius: 0%;
 }
 /* .naturepic:hover {
     opacity: 0.5;
