@@ -1,5 +1,5 @@
 import '../auth/user.js';
-import { getUser, getPosts, getProfileById } from '../fetch-utils.js';
+import { getUser, getPosts, getProfileById, deletePost } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
@@ -12,11 +12,9 @@ const messageFeedEl = document.querySelector('Messages-for-post');
 
 // const messageForm = document.querySelector('.message-form');
 
-
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
-
 
 window.addEventListener('load', async () => {
     // error handling
@@ -62,8 +60,6 @@ async function displayProfile() {
     avatarImgEl.src = profile.avatar_url;
     usernameHeaderEl.textContent = profile.username;
     headlineHeaderEl.textContent = profile.headline;
-
-
 }
 
 async function displayPosts() {
@@ -72,8 +68,9 @@ async function displayPosts() {
 
     for (let post of posts) {
         const postEl = renderPost(post);
+        // delete post button
+        // const deleteButton = await deletePost(id);
+        // postEl.append(deleteButton);
         postSectionsEl.append(postEl);
     }
-
-
 }
