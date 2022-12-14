@@ -7,9 +7,8 @@ const profileSectionsEl = document.querySelector('.profile-info-section');
 const avatarImgEl = document.querySelector('#avatar-img');
 const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
-const usernameEl = document.querySelector('.username');
-const messageForm = document.querySelector('.message-form')
-
+const messageForm = document.querySelector('.message-form');
+const profileMessagesEl = document.querySelector('.profile-messages');
 const messageFeedEl = document.querySelector('Messages-for-post');
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
@@ -25,32 +24,33 @@ window.addEventListener('load', async () => {
     }
     displayProfile();
     displayPosts();
+    displayMessages();
 });
 
-onmessage(id, async (payload) => {
-    displayProfile();
-});
+// onMessage(id, async (payload) => {
+//     displayProfile();
+// });
 
-messageForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = new FormData(messageForm);
-    // do we need to create a getProfileByUser to distinguish between sender and recipient?
-    const senderProfile = await getProfile(user.id);
+// messageForm.addEventListener('submit', async (e) => {
+//     e.preventDefault();
+//     const data = new FormData(messageForm);
+//     // do we need to create a getProfileByUser to distinguish between sender and recipient?
+//     const senderProfile = await getProfile(user.id);
 
-    if (!senderProfile) {
-        alert('Make a profile before Messageing!');
-        location.assign('/');
-    } else {
-        await createMessage({
-            text: data.get('messages'),
-            sender: senderProfile.data.username,
-            recipient_id: id,
-            user_id: user.id,
-            sender_avatar: senderProfile.data.avatar_url,
-        });
-        messageForm.reset();
-    }
-});
+//     if (!senderProfile) {
+//         alert('Make a profile before Messaging!');
+//         location.assign('/');
+//     } else {
+//         await createMessage({
+//             text: data.get('messages'),
+//             sender: senderProfile.data.username,
+//             recipient_id: id,
+//             user_id: user.id,
+//             sender_avatar: senderProfile.data.avatar_url,
+//         });
+//         messageForm.reset();
+//     }
+// });
 
 //display function
 
@@ -60,14 +60,19 @@ async function displayProfile() {
     usernameHeaderEl.textContent = profile.username;
     headlineHeaderEl.textContent = profile.headline;
     profileSectionsEl.textContent = '';
-    messagesFeedEl.textContent = '';
 
-    const profileLikes = renderLikes(profile);
+    // const profileLikes = renderLikes(profile);
+    // profileSectionsEl.append(profileLikes);
+
+
+}
+
+async function displayMessages() {
+    const profile = await getProfileById(id);
+    profileMessages.textContent = '';
     const profileMessages = await renderMessages(profile);
 
-    profileSectionsEl.append(profileLikes);
-    messagesFeedEl.append(profileMessages);
-
+    profileMessagesEl.append(profileMessages);
 }
 
 export async function displayPosts() {
@@ -81,27 +86,26 @@ export async function displayPosts() {
     }
 }
 
-function toggledeleteButton() {
-
-}
-
-function renderLikes({ likes, username, id }) {
-
-    const likeButton = document.createElement('button');
-    const profileLikes = document.createElement('div');
-
-    profileLikes.classList.add('profile-likes');
-    profileLikes.append(likeButton);
-
-    likeButton.textContent = '🍃';
-
-    p.classList.add('profile-name');
+// function toggledeleteButton() {
 
 
 
-    likeButton.addEventListener('click', async () => {
-        await profileLikes(id);
-    });
+// function renderLikes({ likes, username, id }) {
 
-}
-return profileLikes;
+//     const likeButton = document.createElement('button');
+//     const profileLikes = document.createElement('div');
+
+//     profileLikes.classList.add('profile-likes');
+//     profileLikes.append(likeButton);
+
+//     likeButton.textContent = '🍃';
+
+
+
+
+//     likeButton.addEventListener('click', async () => {
+//         await profileLikes(id);
+//     });
+//     return profileLikes;
+// }
+

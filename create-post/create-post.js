@@ -39,6 +39,7 @@ postForm.addEventListener('submit', async (e) => {
 
     const formData = new FormData(postForm);
     const profile = await getProfile(user.id);
+    // eslint-disable-next-line no-console
     console.log('profile', profile);
 
     // object: altText, location, description

@@ -106,9 +106,6 @@ export async function deletePost(id) {
 export function redirectIfNoProfile(id) {
     if (!id) {
         location.replace('../create-profile');
-    } else {
-        location('/');
-
     }
 }
 
@@ -117,8 +114,8 @@ export async function createMessage(message) {
     return checkError(response);
 }
 
-export function onMessage(profileId, handleMessage) {
-    client.from(`messages:recipient_id=eq.${profileId}`).on('INSERT', handleMessage).subscribe();
+export function onMessage(id, handleMessage) {
+    client.from(`messages:recipient_id=eq.${id}`).on('INSERT', handleMessage).subscribe();
 }
 
 export async function profileLikes(id) {
@@ -134,5 +131,6 @@ export async function profileLikes(id) {
 
 // error handling
 function checkError(response) {
+    // eslint-disable-next-line no-console
     return response.error ? console.error(response.error) : response.data;
 }

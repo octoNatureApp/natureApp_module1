@@ -77,62 +77,61 @@ export function renderPost(postObject, profile) {
     return div;
 }
 
-export async function renderMessages(profile) {
-    const ul = document.createElement('ul');
+// export async function renderMessages(profile) {
+//     const ul = document.createElement('ul');
 
-    ul.classList.add('messages');
+//     ul.classList.add('messages');
 
-    for (let i = 0; i < profile.messages.length; i++) {
-        console.log(profile, 'profile');
-        // for (let i = profile.messages.length -1; i > -1; i--)
-        // console.log('i', profile.messages[i]);
-        const li = document.createElement('p');
-        li.classList.add('message');
+//     for (let i = 0; i < profile.messages.length; i++) {
+//         // for (let i = profile.messages.length -1; i > -1; i--)
+//         // console.log('i', profile.messages[i]);
+//         const li = document.createElement('p');
+//         li.classList.add('message');
 
-        const div = document.createElement('div');
-        div.classList.add('message-info');
+//         const div = document.createElement('div');
+//         div.classList.add('message-info');
 
-        const img = document.createElement('img');
-        img.classList.add('avatar-thumbnail');
-        // img.src = profile.messages[i].sender;
-        // img.alt = 'avatar';
+//         const img = document.createElement('img');
+//         img.classList.add('avatar-thumbnail');
+//         // img.src = profile.messages[i].sender;
+//         // img.alt = 'avatar';
 
-        // console.log(sender.data.avatar_url);
+//         // console.log(sender.data.avatar_url);
 
-        if (profile.messages[i].sender_avatar) {
-            img.src = profile.messages[i].sender_avatar;
-        } else {
-            img.src = '/assets/avatar.png';
-        }
-        img.alt = 'avatar';
+//         if (profile.messages[i].sender_avatar) {
+//             img.src = profile.messages[i].sender_avatar;
+//         } else {
+//             img.src = '/assets/avatar.png';
+//         }
+//         img.alt = 'avatar';
 
-        const senderSpan = document.createElement('span');
-        senderSpan.classList.add('from');
-        senderSpan.textContent = `${profile.messages[i].sender} - `;
+//         const senderSpan = document.createElement('span');
+//         senderSpan.classList.add('from');
+//         senderSpan.textContent = `${profile.messages[i].sender} - `;
 
-        const dateSpan = document.createElement('span');
-        dateSpan.classList.add('created-date');
-        dateSpan.textContent = new Date(profile.messages[i].created_at).toLocaleString('en-US', {
-            day: 'numeric',
-            month: 'numeric',
-            year: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-        });
+//         const dateSpan = document.createElement('span');
+//         dateSpan.classList.add('created-date');
+//         dateSpan.textContent = new Date(profile.messages[i].created_at).toLocaleString('en-US', {
+//             day: 'numeric',
+//             month: 'numeric',
+//             year: 'numeric',
+//             hour: 'numeric',
+//             minute: 'numeric',
+//         });
 
-        const text = document.createElement('p');
-        text.classList.add('text');
-        text.textContent = profile.messages[i].text;
+//         const text = document.createElement('p');
+//         text.classList.add('text');
+//         text.textContent = profile.messages[i].text;
 
-        div.append(img, senderSpan, dateSpan);
+//         div.append(img, senderSpan, dateSpan);
 
-        li.append(div, text);
+//         li.append(div, text);
 
-        ul.append(li);
-    }
+//         ul.append(li);
+//     }
 
-    return ul;
-}
+//     return ul;
+// }
 
 
 
