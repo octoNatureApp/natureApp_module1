@@ -1,6 +1,8 @@
 // imports
 
 import { getProfile, getUser, uploadImage, upsertProfile } from '../fetch-utils.js';
+// this will check if we have a user and set signout link if it exists
+import '../auth/user.js';
 
 // get DOM elements
 const errorDisplay = document.getElementById('error-display');

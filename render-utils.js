@@ -38,7 +38,7 @@ export function renderProfile(profile) {
     return a;
 }
 
-export function renderPost(postObject) {
+export function renderPost(postObject, profile) {
     const div = document.createElement('div');
     const img = document.createElement('img');
     const p = document.createElement('p');
@@ -65,10 +65,16 @@ export function renderPost(postObject) {
         // update posts by profile_id
         const updatedPosts = await getPosts(postObject.profile_id);
 
-        // display updated posts
-        displayPosts(updatedPosts);
+        if (confirm('Click Ok to delete post. This action cannot be done')) {
+            // display updated posts
+            displayPosts(updatedPosts);
+        } else { location.assign(`/profile-feed/?id=${profile.profile_id}`); }
+
+
     });
 
     div.append(img, p, p1, deleteButton);
     return div;
 }
+
+
