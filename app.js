@@ -1,7 +1,7 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { getProfiles, getUser } from './fetch-utils.js';
+import { getProfiles, getUser, redirectIfNoProfile } from './fetch-utils.js';
 import { renderProfile } from './render-utils.js';
 
 /* Get DOM Elements */
@@ -13,6 +13,11 @@ const user = getUser();
 window.addEventListener('load', async () => {
     displayProfiles();
 });
+
+window.addEventListener('load', async () => {
+    redirectIfNoProfile(user);
+});
+
 
 /* Display Functions */
 async function displayProfiles() {
