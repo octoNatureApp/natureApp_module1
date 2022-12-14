@@ -1,16 +1,20 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { getProfiles, getUser } from './fetch-utils.js';
+import { getProfile, getProfiles, getUser } from './fetch-utils.js';
 import { renderProfile } from './render-utils.js';
 
 /* Get DOM Elements */
 const containerEl = document.getElementById('profiles-container');
-const profileFeed = document.querySelector('[href="./profile-feed]');
+const profileFeed = document.querySelector('#profile-feed-link');
+
 /* State */
+// go to user table and get the user
 const user = getUser();
 /* Events */
 window.addEventListener('load', async () => {
+    const id = await getProfile(user.id);
+    profileFeed.href = `../profile-feed/?id=${id.data.id}`;
     displayProfiles();
 });
 
@@ -26,6 +30,7 @@ async function displayProfiles() {
     }
 }
 
-profileFeed.addEventListener('click', async () => {
-    profileFeed.href = `/profile-feed/?id=${user.id}`;
-});
+// profileFeed.addEventListener('click', async () => {
+//     const id = await getProfile(user.id);
+//     window.location.assign(`../profile-feed/?id=${id.data.id}`);
+// });
