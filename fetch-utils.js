@@ -103,11 +103,24 @@ export async function deletePost(id) {
     return checkError(response);
 }
 
-export function redirectIfNoProfile(profile) {
-    if (!profile) {
+export function redirectIfNoProfile(id) {
+    if (!id) {
         location.replace('../create-profile');
+    } else {
+        location('/');
+
     }
 }
+
+export async function createMessage(message) {
+    const response = await client.from('messages').insert(message).single();
+    return checkError(response);
+}
+
+export function onMessage(profileId, handleMessage) {
+    client.from(`messages:recipient_id=eq.${profileId}`).on('INSERT', handleMessage).subscribe();
+}
+
 
 // error handling
 function checkError(response) {
