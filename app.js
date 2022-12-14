@@ -20,6 +20,7 @@ async function displayProfiles() {
 
     const profiles = await getProfiles();
 
+
     for (let profile of profiles) {
         const profileEl = renderProfile(profile);
         containerEl.append(profileEl);
