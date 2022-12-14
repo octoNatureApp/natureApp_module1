@@ -99,4 +99,6 @@ form button:disabled {
     object-fit: cover;
     border: 1px solid;
     border-radius: 24px;
+    opacity: 1;
+    box-shadow: 10px 10px 8px 7px #000000bf;
 }
