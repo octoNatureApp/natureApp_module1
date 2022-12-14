@@ -1,7 +1,7 @@
 /* Imports */
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
-import { getProfile, getProfiles, getUser } from './fetch-utils.js';
+import { getProfile, getProfiles, getUser, redirectIfNoProfile } from './fetch-utils.js';
 import { renderProfile } from './render-utils.js';
 
 /* Get DOM Elements */
@@ -14,8 +14,15 @@ const user = getUser();
 /* Events */
 window.addEventListener('load', async () => {
     const id = await getProfile(user.id);
-    profileFeed.href = `../profile-feed/?id=${id.data.id}`;
-    displayProfiles();
+
+    if (!id) {
+        location.replace('./create-profile');
+    } else {
+
+
+        profileFeed.href = `../profile-feed/?id=${id.data.id}`;
+        displayProfiles();
+    }
 });
 
 /* Display Functions */
