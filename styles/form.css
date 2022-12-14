@@ -3,9 +3,9 @@ form:not(.inline) {
     margin: auto;
     max-width: 500px;
     background: white;
-    padding: 20px 40px;
+    padding: 20px 40px 56px;
     display: grid;
-    gap: 20px;
+    gap: 16px;
     border-radius: 4px;
 }
 form h2 {
