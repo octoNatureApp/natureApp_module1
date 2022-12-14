@@ -75,31 +75,24 @@ export async function displayPosts() {
     }
 }
 
-function renderLikes({ sparkles, username, id }) {
-    const p = document.createElement('p');
-    const downButton = document.createElement('button');
-    const upButton = document.createElement('button');
-    const buttons = document.createElement('div');
+function renderLikes({ likes, username, id }) {
 
-    buttons.append(downButton, upButton);
-    const profileSparkles = document.createElement('div');
+    const likeButton = document.createElement('button');
+    const profileLikes = document.createElement('div');
 
-    profileSparkles.classList.add('profile-sparkles');
-    profileSparkles.append(p, buttons);
+    profileLikes.classList.add('profile-likes');
+    profileLikes.append(likeButton);
 
-    downButton.textContent = '➖';
-    upButton.textContent = '➕';
+    likeButton.textContent = '🍃';
+
     p.classList.add('profile-name');
 
-    p.textContent = `${username} has ${sparkles} ✨`;
 
-    downButton.addEventListener('click', async () => {
+
+    likeButton.addEventListener('click', async () => {
         await decrementSparkles(id);
-        await fetchAndDisplayProfile();
+
     });
-    upButton.addEventListener('click', async () => {
-        await incrementSparkles(id);
-        await fetchAndDisplayProfile();
-    });
+
 
     return profileSparkles;
