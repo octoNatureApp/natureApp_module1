@@ -61,7 +61,6 @@ profileForm.addEventListener('submit', async (e) => {
     if (imageFile.size) {
         const imagePath = `${user.id}/${imageFile.name}`;
         const url = await uploadImage(imagePath, imageFile);
-        console.log('url', url);
 
         profileObj.avatar_url = url;
     }
