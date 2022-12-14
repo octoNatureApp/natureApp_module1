@@ -24,7 +24,7 @@ async function displayProfiles() {
     containerEl.textContent = '';
 
     const profiles = await getProfiles();
-    console.log(profiles);
+
 
     for (let profile of profiles) {
         const profileEl = renderProfile(profile);

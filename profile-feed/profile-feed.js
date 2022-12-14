@@ -1,5 +1,5 @@
 import '../auth/user.js';
-import { getUser, getPosts, getProfileById, deletePost } from '../fetch-utils.js';
+import { getUser, getPosts, getProfileById } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
@@ -9,9 +9,6 @@ const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
 
 const messageFeedEl = document.querySelector('Messages-for-post');
-
-// const messageForm = document.querySelector('.message-form');
-
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
@@ -62,7 +59,7 @@ async function displayProfile() {
     headlineHeaderEl.textContent = profile.headline;
 }
 
-async function displayPosts() {
+export async function displayPosts() {
     postSectionsEl.textContent = '';
     const posts = await getPosts(id);
 

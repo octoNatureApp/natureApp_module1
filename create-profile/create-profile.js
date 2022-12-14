@@ -1,6 +1,8 @@
 // imports
 
 import { getProfile, getUser, uploadImage, upsertProfile } from '../fetch-utils.js';
+// this will check if we have a user and set signout link if it exists
+import '../auth/user.js';
 
 // get DOM elements
 const errorDisplay = document.getElementById('error-display');
@@ -61,7 +63,6 @@ profileForm.addEventListener('submit', async (e) => {
     if (imageFile.size) {
         const imagePath = `${user.id}/${imageFile.name}`;
         const url = await uploadImage(imagePath, imageFile);
-        console.log('url', url);
 
         profileObj.avatar_url = url;
     }
