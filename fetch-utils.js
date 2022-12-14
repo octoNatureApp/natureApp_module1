@@ -84,7 +84,13 @@ export async function uploadNaturePic(imagePath, imageFile) {
 
 export async function getProfile(user_id) {
     const response = await client.from('profiles').select('*').match({ user_id }).maybeSingle();
-    return response;
+    console.log(response);
+    if (!response) {
+        return null;
+    } else {
+        return response;
+    }
+
 }
 
 export async function getProfileById(id) {
@@ -103,10 +109,10 @@ export async function deletePost(id) {
     return checkError(response);
 }
 
-export function redirectIfNoProfile(profile) {
-    if (!profile) {
-        location.replace('../create-profile');
-    }
+export function redirectIfNoProfile() {
+
+    location.replace('../create-profile');
+
 }
 
 // error handling
