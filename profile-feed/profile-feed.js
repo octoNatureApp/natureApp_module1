@@ -3,7 +3,7 @@ import { getProfile, getUser, getPosts, getProfileById } from '../fetch-utils.js
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
-const profileInfoEl = document.querySelector('.profile-info-section')
+const profileInfoEl = document.querySelector('.profile-info-section');
 const avatarImgEl = document.querySelector('#avatar-img');
 const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
@@ -13,11 +13,9 @@ const postLocationEl = document.querySelector('.post-location');
 const postDescriptionEl = document.querySelector('.post-description');
 // const messageForm = document.querySelector('.message-form');
 
-
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
-
 
 window.addEventListener('load', async () => {
     // error handling
@@ -63,8 +61,6 @@ async function displayProfile() {
     avatarImgEl.src = profile.avatar_url;
     usernameHeaderEl.textContent = profile.username;
     headlineHeaderEl.textContent = profile.headline;
-
-
 }
 
 async function displayPosts() {
@@ -75,6 +71,4 @@ async function displayPosts() {
         const postEl = renderPost(post);
         postSectionsEl.append(postEl);
     }
-
-
 }
