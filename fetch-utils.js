@@ -92,6 +92,12 @@ export async function getProfileById(id) {
     return checkError(response);
 }
 
+// get post by id for delete button event listener on profile feed
+export async function getPostById(id) {
+    const response = await client.from('posts').select('*').match({ id }).single();
+    return checkError(response);
+}
+
 export async function deletePost(id) {
     const response = await client.from('posts').delete().match({ id }).single();
     return checkError(response);
