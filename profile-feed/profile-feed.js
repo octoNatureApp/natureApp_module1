@@ -1,9 +1,9 @@
 import '../auth/user.js';
 import { getUser, getPosts, getProfileById, getProfile, onMessage, createMessage } from '../fetch-utils.js';
-import { renderPost } from '../render-utils.js';
+import { renderMessages, renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
-
+const profileSectionsEl = document.querySelector('.profile-info-section');
 const avatarImgEl = document.querySelector('#avatar-img');
 const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
@@ -58,7 +58,15 @@ async function displayProfile() {
     const profile = await getProfileById(id);
     avatarImgEl.src = profile.avatar_url;
     usernameHeaderEl.textContent = profile.username;
-    headlineHeaderEl.textContent = profile.headline; \
+    headlineHeaderEl.textContent = profile.headline;
+    profileSectionsEl.textContent = '';
+    messagesFeedEl.textContent = '';
+
+    const profileLikes = renderLikes(profile);
+    const profileMessages = await renderMessages(profile);
+
+    profileSectionsEl.append(profileLikes);
+    messagesFeedEl.append(profileMessages);
 
 }
 
@@ -68,11 +76,13 @@ export async function displayPosts() {
 
     for (let post of posts) {
         const postEl = renderPost(post);
-        // delete post button
-        // const deleteButton = await deletePost(id);
-        // postEl.append(deleteButton);
+
         postSectionsEl.append(postEl);
     }
+}
+
+function toggledeleteButton() {
+
 }
 
 function renderLikes({ likes, username, id }) {
@@ -90,9 +100,8 @@ function renderLikes({ likes, username, id }) {
 
 
     likeButton.addEventListener('click', async () => {
-        await decrementSparkles(id);
-
+        await profileLikes(id);
     });
 
-
-    return profileSparkles;
+}
+return profileLikes;
