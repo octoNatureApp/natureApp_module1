@@ -121,6 +121,16 @@ export function onMessage(profileId, handleMessage) {
     client.from(`messages:recipient_id=eq.${profileId}`).on('INSERT', handleMessage).subscribe();
 }
 
+export async function incrementLikes(id) {
+    const profile = await getProfileById(id);
+
+    const response = await client
+        .from('profiles')
+        .update({ likes: profile.likes + 1 })
+        .match({ id });
+
+    return checkError(response);
+}
 
 // error handling
 function checkError(response) {

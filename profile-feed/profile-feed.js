@@ -1,12 +1,14 @@
 import '../auth/user.js';
-import { getUser, getPosts, getProfileById } from '../fetch-utils.js';
+import { getUser, getPosts, getProfileById, getProfile, onMessage, createMessage } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
-const profileInfoEl = document.querySelector('.profile-info-section');
+
 const avatarImgEl = document.querySelector('#avatar-img');
 const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
+const usernameEl = document.querySelector('.username');
+const messageForm = document.querySelector('.message-form')
 
 const messageFeedEl = document.querySelector('Messages-for-post');
 const params = new URLSearchParams(location.search);
@@ -25,30 +27,30 @@ window.addEventListener('load', async () => {
     displayPosts();
 });
 
-// onmessage(id, async (payload) => {
-//     displayProfile();
-// });
+onmessage(id, async (payload) => {
+    displayProfile();
+});
 
-// MessageForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-//     const data = new FormData(MessageForm);
-//     // do we need to create a getProfileByUser to distinguish between sender and recipient?
-//     const senderProfile = await getProfile(user.id);
+messageForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(messageForm);
+    // do we need to create a getProfileByUser to distinguish between sender and recipient?
+    const senderProfile = await getProfile(user.id);
 
-//     if (!senderProfile) {
-//         alert('Make a profile before Messageing!');
-//         location.assign('/');
-//     } else {
-//         await createMessage({
-//             text: data.get('messages'),
-//             sender: senderProfile.data.username,
-//             recipient_id: id,
-//             user_id: user.id,
-//             sender_avatar: senderProfile.data.avatar_url,
-//         });
-//         messageForm.reset();
-//     }
-// });
+    if (!senderProfile) {
+        alert('Make a profile before Messageing!');
+        location.assign('/');
+    } else {
+        await createMessage({
+            text: data.get('messages'),
+            sender: senderProfile.data.username,
+            recipient_id: id,
+            user_id: user.id,
+            sender_avatar: senderProfile.data.avatar_url,
+        });
+        messageForm.reset();
+    }
+});
 
 //display function
 
@@ -56,7 +58,8 @@ async function displayProfile() {
     const profile = await getProfileById(id);
     avatarImgEl.src = profile.avatar_url;
     usernameHeaderEl.textContent = profile.username;
-    headlineHeaderEl.textContent = profile.headline;
+    headlineHeaderEl.textContent = profile.headline; \
+
 }
 
 export async function displayPosts() {
@@ -71,3 +74,32 @@ export async function displayPosts() {
         postSectionsEl.append(postEl);
     }
 }
+
+function renderLikes({ sparkles, username, id }) {
+    const p = document.createElement('p');
+    const downButton = document.createElement('button');
+    const upButton = document.createElement('button');
+    const buttons = document.createElement('div');
+
+    buttons.append(downButton, upButton);
+    const profileSparkles = document.createElement('div');
+
+    profileSparkles.classList.add('profile-sparkles');
+    profileSparkles.append(p, buttons);
+
+    downButton.textContent = '➖';
+    upButton.textContent = '➕';
+    p.classList.add('profile-name');
+
+    p.textContent = `${username} has ${sparkles} ✨`;
+
+    downButton.addEventListener('click', async () => {
+        await decrementSparkles(id);
+        await fetchAndDisplayProfile();
+    });
+    upButton.addEventListener('click', async () => {
+        await incrementSparkles(id);
+        await fetchAndDisplayProfile();
+    });
+
+    return profileSparkles;
