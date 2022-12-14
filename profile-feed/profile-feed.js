@@ -1,16 +1,15 @@
 import '../auth/user.js';
-import { getProfile, getUser, getPosts, getProfileById } from '../fetch-utils.js';
+import { getUser, getPosts, getProfileById } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
-const profileInfoEl = document.querySelector('.profile-info-section')
+const profileInfoEl = document.querySelector('.profile-info-section');
 const avatarImgEl = document.querySelector('#avatar-img');
 const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
-const postCardImgEl = document.querySelector('.post-card-img');
+
 const messageFeedEl = document.querySelector('Messages-for-post');
-const postLocationEl = document.querySelector('.post-location');
-const postDescriptionEl = document.querySelector('.post-description');
+
 // const messageForm = document.querySelector('.message-form');
 
 
