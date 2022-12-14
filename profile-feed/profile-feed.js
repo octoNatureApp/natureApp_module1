@@ -1,5 +1,5 @@
 import '../auth/user.js';
-import { getUser, getPosts, getProfileById, deletePost } from '../fetch-utils.js';
+import { getUser, getPosts, getProfileById } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
@@ -59,7 +59,7 @@ async function displayProfile() {
     headlineHeaderEl.textContent = profile.headline;
 }
 
-async function displayPosts() {
+export async function displayPosts() {
     postSectionsEl.textContent = '';
     const posts = await getPosts(id);
 

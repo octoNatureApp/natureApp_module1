@@ -1,4 +1,5 @@
-import { deletePost, getPostById } from './fetch-utils.js';
+import { deletePost, getPosts } from './fetch-utils.js';
+import { displayPosts } from './profile-feed/profile-feed.js';
 
 // render profile on home page
 export function renderProfile(profile) {
@@ -42,36 +43,32 @@ export function renderPost(postObject) {
     const img = document.createElement('img');
     const p = document.createElement('p');
     const p1 = document.createElement('p');
-    const button = document.createElement('button');
+    const deleteButton = document.createElement('button');
 
     div.classList.add('post-list');
     img.classList.add('naturepic');
     p.classList.add('location');
     p1.classList.add('description');
-    button.classList.add('delete-button');
+    deleteButton.classList.add('delete-button');
 
     img.src = postObject.naturepic_url;
     img.alt = '';
     p.textContent = postObject.location;
     p1.textContent = postObject.description;
-    button.textContent = 'Delete Post';
+    deleteButton.textContent = 'Delete Post';
 
-    // event listener for delete post button
-    // BROKEN FOR NOW
-    button.addEventListener('click', async () => {
-        // variables
-        // variable to check for auth user (import getuser?)
-        const postId = getPostById(postObject.id);
-        // disable button for non-users
-        if (!postId) {
-            button.disable = false;
-            button.textContent = 'Not Authorized to Delete';
-        } else {
-            // allow logged in user to delete their own post
-            await deletePost(postId);
-        }
+    // delete post event listener
+    deleteButton.addEventListener('click', async () => {
+        // deletePosts by post id
+        await deletePost(postObject.id);
+
+        // update posts by profile_id
+        const updatedPosts = await getPosts(postObject.profile_id);
+
+        // display updated posts
+        displayPosts(updatedPosts);
     });
 
-    div.append(img, p, p1, button);
+    div.append(img, p, p1, deleteButton);
     return div;
 }
