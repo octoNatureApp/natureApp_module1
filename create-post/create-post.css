@@ -1,6 +1,36 @@
 * {
     cursor: pointer;
 }
+.page-header {
+    position: sticky;
+    top: 0;
+    padding: 15px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #88a65a;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+.page-header .logo {
+    height: 100%;
+}
+
+.page-header .title {
+    font-size: 1.3em;
+    font-weight: 800;
+    flex-grow: 2;
+}
+
+.page-header nav {
+    display: flex;
+    gap: 10px;
+}
+.page-header nav a {
+    color: white;
+}
 form:not(.inline) {
     width: 100%;
     margin: 10% auto;
