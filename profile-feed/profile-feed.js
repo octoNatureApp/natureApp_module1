@@ -9,9 +9,6 @@ const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
 
 const messageFeedEl = document.querySelector('Messages-for-post');
-
-// const messageForm = document.querySelector('.message-form');
-
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
