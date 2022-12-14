@@ -62,6 +62,7 @@ form button {
 }
 form input[type='file'] {
     padding: 0;
+    border: none;
 }
 
 form select:invalid,
