@@ -6,7 +6,7 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 /* Auth related functions */
 export function checkAuth() {
     const user = getUser();
-    console.log(`user`, user);
+
     if (!user) location.replace('/auth');
 }
 export function getUser() {
@@ -88,7 +88,7 @@ export async function uploadNaturePic(imagePath, imageFile) {
 
 export async function getProfile(user_id) {
     const response = await client.from('profiles').select('*').match({ user_id }).maybeSingle();
-    console.log(response);
+
     if (!response) {
         return null;
     } else {
@@ -138,5 +138,6 @@ export async function searchByUsername(username) {
 
 // error handling
 function checkError(response) {
+    // eslint-disable-next-line no-console
     return response.error ? console.error(response.error) : response.data;
 }

@@ -62,7 +62,7 @@ function renderLikes({ likes, id }) {
     likeButton.textContent = `Likes ${likes}🍃`;
 
     div.append(likeButton);
-    console.log(likes);
+
 
 
     likeButton.addEventListener('click', async () => {
