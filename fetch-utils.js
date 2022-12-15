@@ -108,6 +108,15 @@ export function redirectIfNoProfile(profile) {
         location.replace('../create-profile');
     }
 }
+//stretch  goal: search by username
+export async function searchByUsername(username) {
+    let query = client.from('profiles').select('*').order('username');
+    if (username) {
+        query = query.ilike('username', `%${username}%`);
+    }
+    const response = await query;
+    return response;
+}
 
 // error handling
 function checkError(response) {
