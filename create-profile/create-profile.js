@@ -1,6 +1,6 @@
 // imports
 
-import { getProfile, getUser, uploadImage, upsertProfile } from '../fetch-utils.js';
+import { checkAuth, getProfile, getUser, uploadImage, upsertProfile } from '../fetch-utils.js';
 // this will check if we have a user and set signout link if it exists
 import '../auth/user.js';
 
@@ -13,7 +13,7 @@ const userNameInput = profileForm.querySelector('[name=username]');
 const avatarInput = profileForm.querySelector('[name=avatar]');
 const headlineInput = profileForm.querySelector('[name=headline]');
 const signOutLink = document.getElementById('sign-out-link');
-
+checkAuth();
 // state
 let error = null;
 let profile = null;
