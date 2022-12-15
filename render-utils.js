@@ -39,8 +39,6 @@ export function renderProfile(profile) {
 }
 
 export function renderPost(postObject, profile) {
-    console.log('postObject', postObject);
-    console.log(profile);
     const div = document.createElement('div');
     const img = document.createElement('img');
     const p = document.createElement('p');
