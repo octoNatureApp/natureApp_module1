@@ -4,7 +4,11 @@ const SUPABASE_KEY =
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* Auth related functions */
-
+export function checkAuth() {
+    const user = getUser();
+    console.log(`user`, user);
+    if (!user) location.replace('/auth');
+}
 export function getUser() {
     return client.auth.user();
 }
@@ -90,7 +94,6 @@ export async function getProfile(user_id) {
     } else {
         return response;
     }
-
 }
 
 export async function getProfileById(id) {
@@ -110,9 +113,7 @@ export async function deletePost(id) {
 }
 
 export function redirectIfNoProfile() {
-
     location.replace('../create-profile');
-
 }
 
 export async function profileLikes(id) {

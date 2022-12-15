@@ -1,5 +1,5 @@
 import '../auth/user.js';
-import { getUser, getPosts, getProfileById, getProfile } from '../fetch-utils.js';
+import { getUser, getPosts, getProfileById, getProfile, checkAuth } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
@@ -12,8 +12,7 @@ const messageFeedEl = document.querySelector('Messages-for-post');
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
-// ldkfj
-
+checkAuth();
 window.addEventListener('load', async () => {
     // error handling
     if (!id) {
@@ -25,7 +24,6 @@ window.addEventListener('load', async () => {
     displayProfile();
     displayPosts();
 });
-
 
 async function displayProfile() {
     const profile = await getProfileById(id);
@@ -58,11 +56,9 @@ function renderLikes(likes) {
     profileLikes.classList.add('profile-Likes');
     likeButton.textContent = `Likes ${likes}🍃`;
 
-
     profileLikes.append(p, likeButton);
 
     likeButton.addEventListener('click', async () => {
-
         await profileLikes(id);
         await displayProfile();
     });
