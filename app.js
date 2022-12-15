@@ -19,6 +19,7 @@ const user = getUser();
 window.addEventListener('load', async () => {
     const id = await getProfile(user.id);
     if (!id.data) {
+        alert('Welcome! You are being redirected to the create your profile');
         location.replace('./create-profile');
     } else {
         profileFeed.href = `../profile-feed/?id=${id.data.id}`;
