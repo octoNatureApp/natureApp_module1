@@ -31,6 +31,13 @@ const user = getUser();
 
 // display
 // post form submit button event listener
+
+window.addEventListener('load', async () => {
+    alertInterval();
+
+});
+
+
 postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -39,6 +46,7 @@ postForm.addEventListener('submit', async (e) => {
 
     const formData = new FormData(postForm);
     const profile = await getProfile(user.id);
+
 
     // object: altText, location, description
     const postObj = {
@@ -81,3 +89,17 @@ natureInput.addEventListener('change', () => {
         preview.src = '/assets/nature place holder.png';
     }
 });
+
+function alertInterval() {
+    const date = new Date();
+    if (date.getDay() === 4) {
+        alert(('Want to learn more about the original inhabitants of the land you are on. Check out the interactive territory map created by Native Land Canada link'));
+    }
+
+}
+
+
+
+
+
+
