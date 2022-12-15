@@ -28,14 +28,12 @@ window.addEventListener('load', async () => {
 async function displayProfile() {
     const profile = await getProfileById(id);
     const likes = await getProfile(user.id);
-    console.log('likes', likes);
     avatarImgEl.src = profile.avatar_url;
     usernameHeaderEl.textContent = profile.username;
     headlineHeaderEl.textContent = profile.headline;
 
     const profileLikes = renderLikes(profile.id);
     headlineHeaderEl.append(profileLikes);
-    console.log(profileLikes);
 }
 
 export async function displayPosts() {
