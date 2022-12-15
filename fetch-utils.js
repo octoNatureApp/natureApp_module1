@@ -84,7 +84,13 @@ export async function uploadNaturePic(imagePath, imageFile) {
 
 export async function getProfile(user_id) {
     const response = await client.from('profiles').select('*').match({ user_id }).maybeSingle();
-    return response;
+    console.log(response);
+    if (!response) {
+        return null;
+    } else {
+        return response;
+    }
+
 }
 
 export async function getProfileById(id) {
@@ -103,10 +109,21 @@ export async function deletePost(id) {
     return checkError(response);
 }
 
-export function redirectIfNoProfile(profile) {
-    if (!profile) {
-        location.replace('../create-profile');
-    }
+export function redirectIfNoProfile() {
+
+    location.replace('../create-profile');
+
+}
+
+export async function profileLikes(id) {
+    const profile = await getProfileById(id);
+
+    const response = await client
+        .from('profiles')
+        .update({ likes: profile.likes + 1 })
+        .match({ id });
+
+    return checkError(response);
 }
 //stretch  goal: search by username
 export async function searchByUsername(username) {

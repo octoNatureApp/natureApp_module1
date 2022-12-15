@@ -1,5 +1,5 @@
 import '../auth/user.js';
-import { getUser, getPosts, getProfileById } from '../fetch-utils.js';
+import { getUser, getPosts, getProfileById, getProfile } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
@@ -25,49 +25,46 @@ window.addEventListener('load', async () => {
     displayPosts();
 });
 
-// onmessage(id, async (payload) => {
-//     displayProfile();
-// });
-
-// MessageForm.addEventListener('submit', async (e) => {
-//     e.preventDefault();
-//     const data = new FormData(MessageForm);
-//     // do we need to create a getProfileByUser to distinguish between sender and recipient?
-//     const senderProfile = await getProfile(user.id);
-
-//     if (!senderProfile) {
-//         alert('Make a profile before Messageing!');
-//         location.assign('/');
-//     } else {
-//         await createMessage({
-//             text: data.get('messages'),
-//             sender: senderProfile.data.username,
-//             recipient_id: id,
-//             user_id: user.id,
-//             sender_avatar: senderProfile.data.avatar_url,
-//         });
-//         messageForm.reset();
-//     }
-// });
-
-//display function
 
 async function displayProfile() {
     const profile = await getProfileById(id);
+    const likes = await getProfile(user.id);
+    console.log('likes', likes);
     avatarImgEl.src = profile.avatar_url;
     usernameHeaderEl.textContent = profile.username;
     headlineHeaderEl.textContent = profile.headline;
+
+    const profileLikes = renderLikes(profile.id);
+    headlineHeaderEl.append(profileLikes);
+    console.log(profileLikes);
 }
 
 export async function displayPosts() {
     postSectionsEl.textContent = '';
     const posts = await getPosts(id);
-
+    const profile = await getProfile(user.id);
     for (let post of posts) {
-        const postEl = renderPost(post);
-        // delete post button
-        // const deleteButton = await deletePost(id);
-        // postEl.append(deleteButton);
+        const postEl = renderPost(post, profile);
         postSectionsEl.append(postEl);
     }
+}
+
+function renderLikes(likes) {
+    const likeButton = document.createElement('button');
+    const profileLikes = document.createElement('div');
+    const p = document.createElement('p');
+
+    profileLikes.classList.add('profile-Likes');
+    likeButton.textContent = `Likes ${likes}🍃`;
+
+
+    profileLikes.append(p, likeButton);
+
+    likeButton.addEventListener('click', async () => {
+
+        await profileLikes(id);
+        await displayProfile();
+    });
+
+    return profileLikes;
 }
