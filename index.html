@@ -21,8 +21,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&family=Titillium+Web:wght@200;400;600&display=swap"
         />
 
         <!-- css -->
@@ -35,7 +35,7 @@
         <header class="page-header">
             <nav class="left-nav">
                 <a href="./create-profile/"><img src="./assets/edit-icon.png" /></a>
-                <a id="profile-feed-link"><img src="./assets/profile.png"</a>
+                <a id="profile-feed-link"><img src="./assets/user-white-icon.png"</a>
             </nav>
             <nav class="right-nav">
                 <a id="sign-out-link" href="auth"><img src="./assets/logout-white-icon.png" /></a>
@@ -45,10 +45,10 @@
 
         <main>
             <div class="home-main-container">
-                <div class="search-bar">
-                    <input type="text" placeholder="search" />
+                <form class="search-bar" id="search-name-form">
+                    <input name="search-input" type="text" placeholder="search by username" />
                     <button>🔍</button>
-                </div>
+                </form>
                 <ul id="profiles-container"></ul>
             </div>
         </main>

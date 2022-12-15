@@ -11,6 +11,16 @@ form:not(.inline) {
 form h2 {
     text-align: center;
     font-size: 28px;
+    color: black;
+    animation: color-change 1s ease-in-out infinite;
+}
+@keyframes color-change {
+    0% {
+        color: #dbcccc;
+    }
+    100% {
+        color: #8faab3;
+    }
 }
 label {
     font-size: 0.9em;

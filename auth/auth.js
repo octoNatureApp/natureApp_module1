@@ -78,7 +78,7 @@ function displayAuth() {
         authButton.textContent = 'Sign In';
         changeType.textContent = 'Need to create an account?';
     } else {
-        authHeader.textContent = 'Create a new account';
+        authHeader.textContent = 'Create Account In NatureApp';
         authButton.textContent = 'Sign Up';
         changeType.textContent = 'Already have an account?';
     }
