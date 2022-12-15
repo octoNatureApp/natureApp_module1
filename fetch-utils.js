@@ -110,12 +110,12 @@ export function redirectIfNoProfile(profile) {
 }
 //stretch  goal: search by username
 export async function searchByUsername(username) {
-    let query = client.from('profiles').select('*').order('username');
-    if (username) {
-        query = query.ilike('username', `%${username}%`);
-    }
-    const response = await query;
-    return response;
+    let query = await client
+        .from('profiles')
+        .select('*')
+        .order('username')
+        .ilike('username', `%${username}%`);
+    return query;
 }
 
 // error handling
