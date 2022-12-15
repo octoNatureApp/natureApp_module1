@@ -46,7 +46,7 @@ postForm.addEventListener('submit', async (e) => {
 
     const formData = new FormData(postForm);
     const profile = await getProfile(user.id);
-    
+
 
     // object: altText, location, description
     const postObj = {
