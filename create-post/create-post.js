@@ -1,6 +1,6 @@
 // import
 
-import { getProfile, getUser, uploadNaturePic, upsertPost } from '../fetch-utils.js';
+import { checkAuth, getProfile, getUser, uploadNaturePic, upsertPost } from '../fetch-utils.js';
 // this will check if we have a user and set signout link if it exists
 import '../auth/user.js';
 
@@ -14,7 +14,7 @@ const altTextInput = postForm.querySelector('[name=alt-text]');
 const locationInput = postForm.querySelector('[name=location]');
 const descriptionInput = postForm.querySelector('[name=description]');
 const signOutLink = document.getElementById('sign-out-link');
-
+checkAuth();
 // events
 let error = null;
 let post = null;
@@ -46,7 +46,7 @@ postForm.addEventListener('submit', async (e) => {
         alt_text: formData.get('alt-text'),
         location: formData.get('location'),
         description: formData.get('description'),
-        profile_id: profile.data.id
+        profile_id: profile.data.id,
     };
 
     // get image file from form
@@ -69,12 +69,9 @@ postForm.addEventListener('submit', async (e) => {
         updateButton.disabled = false;
         updateButton.textContent = 'POST';
     } else {
-
         location.assign(`/profile-feed/?id=${profile.data.id}`);
     }
 });
-
-
 
 // photo preview and update
 natureInput.addEventListener('change', () => {

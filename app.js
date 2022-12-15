@@ -2,7 +2,7 @@
 // this will check if we have a user and set signout link if it exists
 import './auth/user.js';
 
-import { getProfile, getProfiles, getUser, searchByUsername } from './fetch-utils.js';
+import { checkAuth, getProfile, getProfiles, getUser, searchByUsername } from './fetch-utils.js';
 
 import { renderProfile } from './render-utils.js';
 
@@ -10,7 +10,7 @@ import { renderProfile } from './render-utils.js';
 const containerEl = document.getElementById('profiles-container');
 const profileFeed = document.querySelector('#profile-feed-link');
 const form = document.getElementById('search-name-form');
-
+checkAuth();
 /* State */
 let username = [];
 // go to user table and get the user
@@ -18,7 +18,6 @@ const user = getUser();
 /* Events */
 window.addEventListener('load', async () => {
     const id = await getProfile(user.id);
-
 });
 
 /* Display Functions */
