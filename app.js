@@ -17,14 +17,13 @@ const user = getUser();
 window.addEventListener('load', async () => {
     const id = await getProfile(user.id);
     profileFeed.href = `../profile-feed/?id=${id.data.id}`;
-    displayProfiles();
+    const profiles = await getProfiles();
+    displayProfiles(profiles);
 });
 
 /* Display Functions */
-async function displayProfiles() {
+async function displayProfiles(profiles) {
     containerEl.textContent = '';
-
-    const profiles = await getProfiles();
 
     for (let profile of profiles) {
         const profileEl = renderProfile(profile);
@@ -34,7 +33,8 @@ async function displayProfiles() {
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const searchForm = new FormData(form);
-    searchByUsername(searchForm.get('username'));
+    const profiles = await searchByUsername(searchForm.get('search-input'));
+    displayProfiles(profiles.data);
 });
 
 // profileFeed.addEventListener('click', async () => {
