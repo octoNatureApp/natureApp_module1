@@ -115,6 +115,17 @@ export function redirectIfNoProfile() {
 
 }
 
+export async function profileLikes(id) {
+    const profile = await getProfileById(id);
+
+    const response = await client
+        .from('profiles')
+        .update({ likes: profile.likes + 1 })
+        .match({ id });
+
+    return checkError(response);
+}
+
 // error handling
 function checkError(response) {
     return response.error ? console.error(response.error) : response.data;
