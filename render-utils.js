@@ -50,12 +50,10 @@ export function renderPost(postObject, profile) {
         deleteButton.style.display = 'none';
     }
 
-
     div.classList.add('post-list');
     img.classList.add('naturepic');
     p.classList.add('location');
     p1.classList.add('description');
-
 
     img.src = postObject.naturepic_url;
     img.alt = '';
@@ -74,13 +72,11 @@ export function renderPost(postObject, profile) {
         if (confirm('Click Ok to delete post. This action cannot be done')) {
             // display updated posts
             displayPosts(updatedPosts);
-        } else { location.assign(`/profile-feed/?id=${profile.profile_id}`); }
-
-
+        } else {
+            location.assign(`/profile-feed/?id=${profile.profile_id}`);
+        }
     });
 
     div.append(img, p, p1, deleteButton);
     return div;
 }
-
-
