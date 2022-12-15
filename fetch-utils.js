@@ -4,7 +4,11 @@ const SUPABASE_KEY =
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* Auth related functions */
+export function checkAuth() {
+    const user = getUser();
 
+    if (!user) location.replace('/auth');
+}
 export function getUser() {
     return client.auth.user();
 }
@@ -49,6 +53,12 @@ export async function upsertPost(post) {
     return checkError(response);
 }
 
+// get post from Supabase
+export async function getPosts(profile_id) {
+    const response = await client.from('posts').select('*').match({ profile_id });
+    return checkError(response);
+}
+
 export async function uploadImage(imagePath, imageFile) {
     const bucket = client.storage.from('avatars');
     const response = await bucket.upload(imagePath, imageFile, {
@@ -78,10 +88,56 @@ export async function uploadNaturePic(imagePath, imageFile) {
 
 export async function getProfile(user_id) {
     const response = await client.from('profiles').select('*').match({ user_id }).maybeSingle();
-    return response;
+
+    if (!response) {
+        return null;
+    } else {
+        return response;
+    }
+}
+
+export async function getProfileById(id) {
+    const response = await client.from('profiles').select('*').match({ id }).single();
+    return checkError(response);
+}
+
+// get post by id for delete button event listener on profile feed
+export async function getPostById(id) {
+    const response = await client.from('posts').select('*').match({ id }).single();
+    return checkError(response);
+}
+
+export async function deletePost(id) {
+    const response = await client.from('posts').delete().match({ id }).single();
+    return checkError(response);
+}
+
+export function redirectIfNoProfile() {
+    location.replace('../create-profile');
+}
+
+export async function profileLikes(id) {
+    const profile = await getProfileById(id);
+
+    const response = await client
+        .from('profiles')
+        .update({ likes: profile.likes + 1 })
+        .match({ id });
+
+    return checkError(response);
+}
+//stretch  goal: search by username
+export async function searchByUsername(username) {
+    let query = await client
+        .from('profiles')
+        .select('*')
+        .order('username')
+        .ilike('username', `%${username}%`);
+    return query;
 }
 
 // error handling
 function checkError(response) {
+    // eslint-disable-next-line no-console
     return response.error ? console.error(response.error) : response.data;
 }
