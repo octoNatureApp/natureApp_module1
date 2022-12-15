@@ -18,6 +18,13 @@ const user = getUser();
 /* Events */
 window.addEventListener('load', async () => {
     const id = await getProfile(user.id);
+    if (!id.data) {
+        location.replace('./create-profile');
+    } else {
+        profileFeed.href = `../profile-feed/?id=${id.data.id}`;
+        const profile = await getProfiles();
+        displayProfiles(profile);
+    }
 });
 
 /* Display Functions */
