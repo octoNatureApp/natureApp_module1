@@ -12,6 +12,7 @@ const messageFeedEl = document.querySelector('Messages-for-post');
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
+// ldkfj
 
 window.addEventListener('load', async () => {
     // error handling
