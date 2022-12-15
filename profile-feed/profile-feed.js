@@ -1,5 +1,5 @@
 import '../auth/user.js';
-import { getUser, getPosts, getProfileById } from '../fetch-utils.js';
+import { getUser, getPosts, getProfileById, getProfile } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
@@ -62,12 +62,14 @@ async function displayProfile() {
 export async function displayPosts() {
     postSectionsEl.textContent = '';
     const posts = await getPosts(id);
-
+    const profile = await getProfile(user.id);
     for (let post of posts) {
-        const postEl = renderPost(post);
+        const postEl = renderPost(post, profile);
         // delete post button
         // const deleteButton = await deletePost(id);
         // postEl.append(deleteButton);
         postSectionsEl.append(postEl);
     }
 }
+
+

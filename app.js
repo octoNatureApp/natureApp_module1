@@ -15,7 +15,7 @@ const user = getUser();
 window.addEventListener('load', async () => {
     const id = await getProfile(user.id);
 
-    if (!id) {
+    if (!id.data) {
         location.replace('./create-profile');
     } else {
 
