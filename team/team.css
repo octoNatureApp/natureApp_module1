@@ -1,0 +1,59 @@
+/* header */
+.page-header {
+    background-color: rgba(255, 255, 255, 0);
+}
+header > .title {
+    color: white;
+}
+
+/* team container */
+main > .teams-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* each team member */
+.teammate-container {
+    flex: 33.33%;
+    padding: 10px 50px;
+    /* margin: 20px; */
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* profile pics*/
+.team-profile-pic {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+    height: 200px;
+}
+
+/* text */
+h2 {
+    margin: 0px;
+    padding: 10px;
+}
+.teammate-container > h2,
+.teammate-container > p {
+    color: black;
+    margin: 0px;
+}
+.connection {
+    font-style: italic;
+    display: block;
+}
+
+/* social apps */
+.social-apps-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+.social-apps-container > p > a,
+.social-media-icon {
+    margin: 0px;
+    padding: 0px;
+    height: 50px;
+}
