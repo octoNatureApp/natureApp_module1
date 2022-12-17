@@ -30,10 +30,6 @@ export function renderProfile(profile) {
 
 
 
-    // images
-    // polaroid photo
-    // img.src = profile.naturepic_url;
-    // leave blank so it is replaced with user submitted alt text
     img.alt = '';
     // avatar
     img2.src = profile.avatar_url;
@@ -51,8 +47,6 @@ export function renderProfile(profile) {
     a.prepend(img2, h2, p);
 
     li.append(a);
-
-
 
 
 
