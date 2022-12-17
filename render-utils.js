@@ -4,7 +4,7 @@ import { displayPosts } from './profile-feed/profile-feed.js';
 // render profile on home page
 export function renderProfile(profile) {
 
-    const div = document.createElement('div');
+
     const li = document.createElement('li');
 
 
@@ -21,7 +21,7 @@ export function renderProfile(profile) {
     // class lists
 
 
-    div.classList.add('profiles');
+
     a.classList.add('profile-container');
     img.classList.add('polaroid');
     img2.classList.add('avatar');
@@ -40,24 +40,24 @@ export function renderProfile(profile) {
     img2.alt = 'avatar';
 
     // text content
-    // h2.textContent = `${profile.username}`;
-    // p.textContent = `${profile.headline}`;
+    h2.textContent = `${profile.username}`;
+    p.textContent = `${profile.headline}`;
     a.href = `../profile-feed/?id=${profile.id}`;
 
-    const pNode = document.createTextNode((`${profile.headline}`));
 
-    const h2Content = doucment.createTextNode((`${profile.username}`;));
 
     // append
 
-    a.appendChild(img2, h2, p);
-    li.appendChild(a);
-    div.append(li);
+    a.prepend(img2, h2, p);
+
+    li.append(a);
+
+
 
 
 
     // return
-    return div;
+    return li;
 }
 
 export function renderPost(postObject, profile) {

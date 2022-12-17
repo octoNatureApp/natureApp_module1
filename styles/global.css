@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --background: rgb(224, 234, 247);
     --header-background: white;
     --text-color: rgb(7, 5, 68);
@@ -6,16 +6,17 @@
     --placeholder-color: rgb(136, 136, 153);
     --offset-color: rgb(217, 236, 217);
     --action-color: rgb(77, 132, 252);
-}
+} */
 
 
 
 body {
     font-family: "Inter", sans-serif;
-
     margin: 0 auto;
     color: #241623;
     background: #eef2f4;
+    max-width: 55rem;
+    padding: 2rem 1.5rem;
 }
 
 .page-header {
@@ -29,8 +30,9 @@ body {
     gap: 10px;
     background: linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7));
 
-    /* background-color: #88a65a; */
-    /* box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; */
+
+    /* background-color: #88a65a;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; */
 }
 
 .page-header .logo {
@@ -72,11 +74,11 @@ main {
     display: none;
 }
 
-/* a {
+a {
     text-decoration: none;
-} */
+}
 
-.home-main-container {
+*/ .home-main-container {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -94,12 +96,6 @@ main {
     width: 100%;
     padding: 4px 16px;
 }
-
-#profiles-container {
-
-    gap: 16px;
-}
-
 
 
 
@@ -124,9 +120,10 @@ a {
     padding: 0;
 }
 
-.flow {
+.flow>*+* {
     margin-top: var(--flow-space, 1em);
 }
+
 
 .profile-container {
     display: flex;
@@ -185,7 +182,7 @@ a {
     z-index: 1;
 }
 
-.profile-container .avatar img {
+.profile-container img {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -193,7 +190,7 @@ a {
     left: 0;
     margin: 0;
     z-index: -1;
-    object-fit: cover;
+    object-fit: contain;
     filter: grayscale(1);
     transition: filter 200ms ease, transform 250ms linear;
 }
@@ -245,8 +242,8 @@ a {
     transition-delay: 200ms;
 }
 
-.profile-container:hover .avatar img,
-.profile-container:focus .avatar img {
+.profile-container:hover img,
+.profile-container:focus img {
     filter: grayscale(0);
     transform: scale(1.05) rotate(1deg);
 }
