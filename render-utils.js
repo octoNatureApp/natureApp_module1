@@ -3,6 +3,11 @@ import { displayPosts } from './profile-feed/profile-feed.js';
 
 // render profile on home page
 export function renderProfile(profile) {
+
+    const div = document.createElement('div');
+    const li = document.createElement('li');
+
+
     // container and elements and link
     const a = document.createElement('a');
     // post photo
@@ -11,12 +16,19 @@ export function renderProfile(profile) {
     const img2 = document.createElement('img');
     // username
     const p = document.createElement('p');
+    const h2 = document.createElement('h2');
 
     // class lists
+
+
+    div.classList.add('profiles');
     a.classList.add('profile-container');
     img.classList.add('polaroid');
     img2.classList.add('avatar');
-    p.classList.add('username');
+    h2.classList.add('username');
+    p.classList.add('headline');
+
+
 
     // images
     // polaroid photo
@@ -28,14 +40,24 @@ export function renderProfile(profile) {
     img2.alt = 'avatar';
 
     // text content
-    p.textContent = `${profile.username}`;
+    // h2.textContent = `${profile.username}`;
+    // p.textContent = `${profile.headline}`;
     a.href = `../profile-feed/?id=${profile.id}`;
 
+    const pNode = document.createTextNode((`${profile.headline}`));
+
+    const h2Content = doucment.createTextNode((`${profile.username}`;));
+
     // append
-    a.append(img2, p);
+
+    a.appendChild(img2, h2, p);
+    li.appendChild(a);
+    div.append(li);
+
+
 
     // return
-    return a;
+    return div;
 }
 
 export function renderPost(postObject, profile) {
