@@ -1,38 +1,38 @@
-/* body {
+body {
     height: 100vh;
     color: var(--text-color);
     background: #f4e0cb;
     display: grid;
     grid-template-rows: auto 1fr;
-} */
+}
 
 
-
-
-/* .main {
+.profile-feed-page {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 320px;
-} */
 
-/* .profile-info-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 225px;
-    height: 100%;
-    padding: 20px 0;
-    transition: all 0.5s ease;
-} */
+}
 
-/* .section {
-    display: flex;
+aside {
+    position: sticky;
+    top: 80px;
+    /* the height of the header (60px) + its bottom margin (20px) */
+    padding: 20px;
+    width: 20%;
+    height: 500px;
+    margin-bottom: 20px;
+}
+
+
+
+/* This is for the posts */
+.posts-container div {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-} */
+    padding-left: 20px;
+    flex-grow: 1;
+}
 
 #avatar-img {
     min-height: 110px;
@@ -58,6 +58,8 @@
 /* .naturepic:hover {
     opacity: 0.5;
 } */
+
+/*
 h1 {
     font-size: 2.3rem;
     margin: 10px 0px 0px;
@@ -82,7 +84,7 @@ h2 {
     margin: 10px 0px 0px;
     line-height: 45px;
     letter-spacing: 4px;
-}
+} */
 
 .like-button {
     border: none;
