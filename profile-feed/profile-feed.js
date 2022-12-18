@@ -52,6 +52,37 @@ export async function displayPosts() {
     }
 }
 
+function sliderGallery {
+
+    const prevButton = document.createElement('button');
+    const nextButton = document.createElement('button');
+    const galleryButtons = document.createElement('div');
+
+    // state
+    let currentImage = 0;
+
+
+    // class
+
+    prevButton.classList.add('prev-button');
+    nextButton.classList.add('next-button');
+    galleryButtons.classList.add('gallery-button');
+
+    galleryButtons.append(prevButton, nextButton);
+
+    prevButton.textContent = 'Prev <';
+    nextButton.textContent = ' Next >';
+
+
+
+    nextButton.addEventListener('click', async () => {
+
+    });
+
+    prevButton.addEventListener('click', async () => {
+        ?
+    });
+}
 function renderLikes({ likes, id }) {
     const likeButton = document.createElement('button');
     const div = document.createElement('div');
