@@ -54,41 +54,9 @@ export async function displayPosts() {
     }
 }
 
-export async function renderSlider() {
-    const prevButton = document.createElement('button');
-    const nextButton = document.createElement('button');
-    const div = document.createElement('div');
-
-    prevButton.classList.add('prev-button');
-    nextButton.classList.add('next-button');
-    div.classList.add('gallery-button');
-
-    div.append(prevButton, nextButton);
-
-    prevButton.textContent = 'Prev <';
-    nextButton.textContent = ' Next >';
-
-    const posts = await getPosts(id);
-    const profile = await getProfile(user.id);
-    for (let post of posts) {
-        const postEl = renderPost(post, profile);
-
-        const setState = postEl.length;
 
 
-        nextButton.addEventListener('click', async () => {
-            index = (index === setState.length - 1) ? 0 : index + 1;
-            await displayPosts();
-        });
 
-        prevButton.addEventListener('click', async () => {
-            index = (index === 0) ? setState.length - 1 : index - 1;
-            await displayPosts();
-        });
-    }
-
-    return div;
-}
 
 
 function renderLikes({ likes, id }) {

@@ -103,19 +103,8 @@ h2 {
 
 }
 
-#slides-container {
-    width: 90vw;
-    max-width: 100rem;
-    max-height: 90vh;
-    margin: 0 auto;
-    padding-top: 3rem;
-}
 
-.post-list img {
-    max-width: 100%;
-    object-fit: contain;
 
-}
 
 .naturepic-container {
     display: flex;

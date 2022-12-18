@@ -1,5 +1,7 @@
 import { deletePost, getPosts } from './fetch-utils.js';
-import { displayPosts, renderSlider } from './profile-feed/profile-feed.js';
+import { displayPosts } from './profile-feed/profile-feed.js';
+
+let index = 0;
 
 // render profile on home page
 export function renderProfile(profile) {
@@ -68,6 +70,23 @@ export function renderPost(postObject, profile) {
         deleteButton.style.display = 'none';
     }
 
+    const prevButton = document.createElement('button');
+    const nextButton = document.createElement('button');
+    const buttons = document.createElement('button');
+
+    buttons.classList.add('gallery-buttons');
+
+    prevButton.textContent = 'Prev <';
+    nextButton.textContent = ' Next >';
+    buttons.textContent = '';
+
+    buttons.prepend(prevButton, nextButton);
+
+
+
+
+
+
     div.classList.add('post-list');
     img.classList.add('naturepic');
     p.classList.add('location');
@@ -80,7 +99,7 @@ export function renderPost(postObject, profile) {
     p1.textContent = postObject.description;
     deleteButton.textContent = 'Delete Post';
 
-    const btns = renderSlider();
+
 
     // delete post event listener
     deleteButton.addEventListener('click', async () => {
@@ -98,8 +117,21 @@ export function renderPost(postObject, profile) {
         }
     });
 
-    div2.childAppend(p, p1, btns);
 
+    nextButton.addEventListener('click', async () => {
+        index = (index === postObject.length - 1) ? 0 : index + 1;
+
+
+    });
+
+    prevButton.addEventListener('click', async () => {
+        index = (index === 0) ? postObject.length - 1 : index - 1;
+
+    });
+
+
+
+    div2.prepend(p, p1, buttons);
     div.append(img, div2, deleteButton);
     return div;
 }
