@@ -96,3 +96,28 @@ export function renderPost(postObject, profile) {
     div.append(img, p, p1, deleteButton);
     return div;
 }
+
+
+export async function renderSlideButton(gallery);
+// Elements
+const p = document.createElement('p');
+const prevButton = document.createElement('button');
+const nextButton = document.createElement('button');
+
+
+// class
+p.classList.add('gallery-button');
+prevButton.classList.add('prev-button');
+nextButton.classList.add('next-button');
+
+nextButton.addEventListener('click', async () => {
+    ?
+});
+
+prevButton.addEventListener('click', async () => {
+    ?
+});
+
+
+
+
