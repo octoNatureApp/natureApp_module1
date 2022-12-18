@@ -2,8 +2,8 @@ import '../auth/user.js';
 import { getUser, getPosts, getProfileById, getProfile, checkAuth, profileLikes } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
-const postSectionsEl = document.querySelector('.posts-section');
-const profileInfoEl = document.querySelector('.profile-info-section');
+const postSectionsEl = document.querySelector('.posts-container');
+const profileInfoEl = document.querySelector('.profile-info-container');
 const avatarImgEl = document.querySelector('#avatar-img');
 const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');

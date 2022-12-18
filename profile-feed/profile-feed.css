@@ -1,33 +1,38 @@
-body {
+/* body {
     height: 100vh;
     color: var(--text-color);
     background: #f4e0cb;
     display: grid;
     grid-template-rows: auto 1fr;
-}
+} */
 
-.main {
+
+
+
+/* .main {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 320px;
-}
+} */
 
-.profile-info-section {
-    padding: 0px;
-    border-radius: 4px;
-    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
-    justify-content: center;
-    align-items: center;
-}
+/* .profile-info-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 225px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+} */
 
-.section {
+/* .section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-}
+} */
 
 #avatar-img {
     min-height: 110px;
