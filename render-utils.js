@@ -1,5 +1,5 @@
 import { deletePost, getPosts } from './fetch-utils.js';
-import { displayPosts } from './profile-feed/profile-feed.js';
+import { displayPosts, renderSlider } from './profile-feed/profile-feed.js';
 
 // render profile on home page
 export function renderProfile(profile) {
@@ -80,6 +80,8 @@ export function renderPost(postObject, profile) {
     p1.textContent = postObject.description;
     deleteButton.textContent = 'Delete Post';
 
+    const btns = renderSlider();
+
     // delete post event listener
     deleteButton.addEventListener('click', async () => {
         // deletePosts by post id
@@ -96,7 +98,8 @@ export function renderPost(postObject, profile) {
         }
     });
 
-    div2.childAppend(p, p1);
+    div2.childAppend(p, p1, btns);
+
     div.append(img, div2, deleteButton);
     return div;
 }
