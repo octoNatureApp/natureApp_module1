@@ -13,6 +13,7 @@ const messageFeedEl = document.querySelector('Messages-for-post');
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
+let index = 0;
 checkAuth();
 window.addEventListener('load', async () => {
     // error handling
@@ -52,23 +53,21 @@ export async function displayPosts() {
     }
 }
 
-function sliderGallery {
+function sliderGallery() {
+
 
     const prevButton = document.createElement('button');
     const nextButton = document.createElement('button');
-    const galleryButtons = document.createElement('div');
+    const div = document.createElement('div');
 
-    // state
-    let currentImage = 0;
-
-
-    // class
+    const render = renderPost(post);
+    const post = render[index];
 
     prevButton.classList.add('prev-button');
     nextButton.classList.add('next-button');
-    galleryButtons.classList.add('gallery-button');
+    div.classList.add('gallery-button');
 
-    galleryButtons.append(prevButton, nextButton);
+    div.append(prevButton, nextButton);
 
     prevButton.textContent = 'Prev <';
     nextButton.textContent = ' Next >';
@@ -76,12 +75,15 @@ function sliderGallery {
 
 
     nextButton.addEventListener('click', async () => {
-
+        index = (index === post.length - 1) ? 0 : index + 1;
+        await displayPosts();
     });
 
     prevButton.addEventListener('click', async () => {
-        ?
+        index = (index === 0) ? render.length - 1 : index - 1;
+        await displayPosts();
     });
+    return div;
 }
 function renderLikes({ likes, id }) {
     const likeButton = document.createElement('button');
