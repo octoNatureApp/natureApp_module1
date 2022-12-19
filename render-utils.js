@@ -1,4 +1,4 @@
-import { deletePost, getPosts } from './fetch-utils.js';
+import { deletePost, getPosts, getPostById } from './fetch-utils.js';
 import { displayPosts, renderImageNav } from './profile-feed/profile-feed.js';
 
 let index = 0;
@@ -58,6 +58,7 @@ export function renderProfile(profile) {
 
 export function renderPost(postObject, profile) {
     const div = document.createElement('div');
+    const li = document.createElement('li');
     const img = document.createElement('img');
     const p = document.createElement('p');
     const p1 = document.createElement('p');
@@ -71,6 +72,7 @@ export function renderPost(postObject, profile) {
     }
 
     div.classList.add('post-list');
+    li.classList.add('slides-container');
     img.classList.add('naturepic');
     p.classList.add('location');
     p1.classList.add('description');
@@ -83,7 +85,7 @@ export function renderPost(postObject, profile) {
     deleteButton.textContent = 'Delete Post';
 
     const slideNav = renderImageNav();
-    console.log(slideNav)
+    console.log(slideNav);
 
 
     // delete post event listener
@@ -105,13 +107,25 @@ export function renderPost(postObject, profile) {
 
 
     div2.prepend(p, p1, slideNav);
-    div.append(img, div2, deleteButton);
-    return div;
+    div.prepend(img, div2, deleteButton);
+    li.append(div);
+    return li;
 }
 
 export function renderThumbnail(postObject) {
-    const img = document.createElement('div');
+    const img = document.createElement('img');
+    const div = document.createElement('div');
+    div.classList.add('thumbnail');
+    img.classList.add('thumbnail-image');
+    img.src = postObject.naturepic_url;
+    img.alt = '';
+    div.textContent = '';
+    div.append(img);
 
+    img.addEventListener('click', async () => {
+        await getPostById(postObject.id);
+    });
+    return div;
 }
 
 
