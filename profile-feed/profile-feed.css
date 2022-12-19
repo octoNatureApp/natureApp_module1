@@ -34,6 +34,14 @@ aside {
     flex-grow: 1;
 }
 
+#posts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,
+            minmax(var(--auto-grid-min-size, 14rem), 1fr));
+    grid-gap: var(--auto-grid-gap, 0);
+    padding-right: 60px;
+}
+
 #avatar-img {
     min-height: 110px;
     min-width: 110px;

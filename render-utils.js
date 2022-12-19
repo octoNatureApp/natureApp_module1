@@ -112,21 +112,6 @@ export function renderPost(postObject, profile) {
     return li;
 }
 
-export function renderThumbnail(postObject) {
-    const img = document.createElement('img');
-    const div = document.createElement('div');
-    div.classList.add('thumbnail');
-    img.classList.add('thumbnail-image');
-    img.src = postObject.naturepic_url;
-    img.alt = '';
-    div.textContent = '';
-    div.append(img);
-
-    img.addEventListener('click', async () => {
-        await getPostById(postObject.id);
-    });
-    return div;
-}
 
 
 
