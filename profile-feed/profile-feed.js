@@ -3,7 +3,6 @@ import { getUser, getPosts, getProfileById, getProfile, checkAuth, profileLikes 
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-container');
-const profileInfoEl = document.querySelector('.profile-info-container');
 const avatarImgEl = document.querySelector('#avatar-img');
 const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
@@ -56,9 +55,6 @@ export async function displayPosts() {
 
 
 
-
-
-
 function renderLikes({ likes, id }) {
     const likeButton = document.createElement('button');
     const div = document.createElement('div');
@@ -80,10 +76,40 @@ function renderLikes({ likes, id }) {
     return div;
 }
 
+export function renderImageNav(nextPost, prevPost) {
+    const postLength = document.getElementsByClassName('post-list')[0];
+    const prevButton = document.createElement('button');
+    const nextButton = document.createElement('button');
+    const buttons = document.createElement('div');
+
+    buttons.classList.add('gallery-buttons');
+
+    prevButton.textContent = 'Prev ⬅️';
+    nextButton.textContent = ' ➡️Next ';
+    buttons.textContent = '';
+
+    buttons.append(prevButton, nextButton);
 
 
 
+    nextButton.addEventListener('click', async () => {
+        const nextPost = [];
+        if (index < postLength - 1) {
+            index++;
+            postLength[index];
+        }
+        return nextPost(postLength[index]);
+    });
 
-
+    prevButton.addEventListener('click', async () => {
+        const prevPost = [];
+        if (index > 0) {
+            index--;
+            postLength[index];
+        }
+        return prevPost(postLength[index]);
+    });
+    return buttons;
+}
 
 

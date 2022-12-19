@@ -1,5 +1,5 @@
 import { deletePost, getPosts } from './fetch-utils.js';
-import { displayPosts } from './profile-feed/profile-feed.js';
+import { displayPosts, renderImageNav } from './profile-feed/profile-feed.js';
 
 let index = 0;
 
@@ -70,23 +70,6 @@ export function renderPost(postObject, profile) {
         deleteButton.style.display = 'none';
     }
 
-    const prevButton = document.createElement('button');
-    const nextButton = document.createElement('button');
-    const buttons = document.createElement('button');
-
-    buttons.classList.add('gallery-buttons');
-
-    prevButton.textContent = 'Prev <';
-    nextButton.textContent = ' Next >';
-    buttons.textContent = '';
-
-    buttons.prepend(prevButton, nextButton);
-
-
-
-
-
-
     div.classList.add('post-list');
     img.classList.add('naturepic');
     p.classList.add('location');
@@ -99,6 +82,8 @@ export function renderPost(postObject, profile) {
     p1.textContent = postObject.description;
     deleteButton.textContent = 'Delete Post';
 
+    const slideNav = renderImageNav();
+    console.log(slideNav)
 
 
     // delete post event listener
@@ -118,22 +103,15 @@ export function renderPost(postObject, profile) {
     });
 
 
-    nextButton.addEventListener('click', async () => {
-        index = (index === postObject.length - 1) ? 0 : index + 1;
 
-
-    });
-
-    prevButton.addEventListener('click', async () => {
-        index = (index === 0) ? postObject.length - 1 : index - 1;
-
-    });
-
-
-
-    div2.prepend(p, p1, buttons);
+    div2.prepend(p, p1, slideNav);
     div.append(img, div2, deleteButton);
     return div;
+}
+
+export function renderThumbnail(postObject) {
+    const img = document.createElement('div');
+
 }
 
 
