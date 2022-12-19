@@ -41,20 +41,33 @@
         </nav>
     </header>
     <!-- main class is for css -->
-    <main class="profile-feed-page">
+    <main>
         <aside>
-            <div class="profile-info-container">
-                <img id="avatar-img" class="avatar" src="/assets/avatar.png" />
-                <h1 class="username-header"></h1>
-                <h2 class="headline-header"></h2>
-                <div id="profile-likes"></div>
-                <!-- if we create likes on profile page instead of each post -->
-                <!-- <div class="profile-popularity"></div> -->
+            <!-- container -->
+            <div class="container">
+                <!-- profile -->
+                <div class="profile-info">
+                    <!-- avatar -->
+                    <div class="profile-image"><img id="avatar-img" class="avatar" src="/assets/avatar.png" /></div>
+                    <!-- username -->
+                    <div class="username">
+                        <h1 class="username-header"></h1>
+                    </div>
+                    <!-- headline -->
+                    <div class="headline"></div>
+                    <!-- likes -->
+                    <div id="profile-likes"></div>
+                    <!-- if we create likes on profile page instead of each post -->
+                    <!-- <div class="profile-popularity"></div> -->
+                </div>
             </div>
         </aside>
         <article>
+            <!-- container -->
             <div class="posts-container" id="thumbnails">
+                <!-- gallery -->
                 <ul id="posts-container" class="slides">
+                    <!-- gallery item either li or post-list -->
                 </ul>
                 <ul id="thumbnails"></ul>
         </article>
