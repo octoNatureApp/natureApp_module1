@@ -4,19 +4,21 @@ body {
     background: #f4e0cb;
     display: grid;
     grid-template-rows: auto 1fr;
+
 }
 
-.main {
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 320px;
+    overflow-y: auto;
 }
 
 .profile-info-section {
     padding: 0px;
     border-radius: 4px;
-    /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     justify-content: center;
     align-items: center;
 }
@@ -29,6 +31,11 @@ body {
     align-items: center;
 }
 
+.profile-feed-page {
+    display: flex;
+    height: 100%;
+}
+
 #avatar-img {
     min-height: 110px;
     min-width: 110px;
@@ -38,6 +45,33 @@ body {
     border: 1px solid var(--placeholder-color);
     border-radius: 24px;
 }
+
+aside {
+    height: 100%;
+    /* Full-height: remove this if you want "auto" height */
+    width: 160px;
+    /* Set the width of the sidebar */
+    position: fixed;
+    /* Fixed Sidebar (stay in place on scroll) */
+
+    top: 100px;
+    /* Stay at the top */
+    left: 0;
+    flex: 1 0 10%;
+
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+.profile-info-section {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
 
 .naturepic {
     width: 325px;
