@@ -31,12 +31,18 @@ body {
     background-color: black;
     transition: 1s;
     background-image: url(https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=formsat&fit=crop&w=2250&q=80);
-    background-size: cover;
+    background-size: fill;
     background-repeat: no-repeat;
     background-position: center;
 }
 
 
+/* form h1 {
+
+    font-size: 28px;
+    color: black;
+    animation: color-change 7s ease-in-out infinite;
+} */
 
 .header>h1 {
     margin: 0;
@@ -58,7 +64,10 @@ body {
 
 .forms>p {
     text-align: right;
-    color: #000;
+}
+
+.forms>p>a {
+    color: white;
     font-size: 14px;
 }
 
@@ -150,6 +159,6 @@ body {
 
 
 
-forms button:disabled {
+form button:disabled {
     opacity: 0.5;
 }

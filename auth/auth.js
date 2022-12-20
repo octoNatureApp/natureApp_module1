@@ -77,12 +77,15 @@ function displayAuth() {
     if (isSignIn) {
         authHeader.textContent = 'NatureApp';
         authWelcome.textContent = 'Welcome Back';
-        authButton.textContent = 'Sign In';
         changeType.textContent = 'Need to create an account?';
+        authButton.textContent = 'Sign In';
+
+
     } else {
         authHeader.textContent = 'Create Account In NatureApp';
         authWelcome.textContent = "Welcome! Let's explore nature together!";
-        authButton.textContent = 'Sign Up';
         changeType.textContent = 'Already have an account?';
+        authButton.textContent = 'Sign Up';
+
     }
 }
