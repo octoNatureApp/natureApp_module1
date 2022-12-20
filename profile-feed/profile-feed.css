@@ -2,20 +2,25 @@ body {
     height: 100vh;
     color: var(--text-color);
     background: #f4e0cb;
-    display: grid;
-    grid-template-rows: auto 1fr;
+
 
 }
+
 
 main {
     display: flex;
     flex-direction: column;
-    align-items: center;
+
     min-width: 320px;
     overflow-y: auto;
+
+    justify-content: space-between;
+    gap: 10px;
+    height: 100%;
+
 }
 
-.profile-info-section {
+.profile-info-container {
     padding: 0px;
     border-radius: 4px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -23,18 +28,10 @@ main {
     align-items: center;
 }
 
-.section {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
 
-.profile-feed-page {
-    display: flex;
-    height: 100%;
-}
+
+
+
 
 #avatar-img {
     min-height: 110px;
@@ -49,37 +46,39 @@ main {
 aside {
     height: 100%;
     /* Full-height: remove this if you want "auto" height */
-    width: 160px;
+    width: 200px;
     /* Set the width of the sidebar */
     position: fixed;
     /* Fixed Sidebar (stay in place on scroll) */
 
     top: 100px;
     /* Stay at the top */
-    left: 0;
-    flex: 1 0 10%;
+    /* left: 0; */
+    /* flex: 1 0 10%; */
 
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 20px;
+    align-content: center;
+    justify-content: flex-start;
 }
 
-.profile-info-section {
+/* .profile-info-container {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
-    display: block;
-}
+    display: flex;
+} */
 
 
 .naturepic {
     width: 325px;
-    margin: 25px;
+    /* margin: 25px; */
     opacity: 1;
     box-shadow: 10px 10px 8px 7px #000000bf;
-    display: grid;
-    grid-template-columns: auto auto auto auto;
+    /* display: grid;
+    grid-template-columns: auto auto auto auto; */
     gap: 16px;
     border-radius: 0%;
 }
@@ -99,20 +98,6 @@ h2 {
     margin: 0px;
 }
 
-.location {
-    font-size: 1.3rem;
-    margin: 10px 0px 0px;
-    line-height: 45px;
-    letter-spacing: 4px;
-}
-
-.description {
-    font-size: 1.3rem;
-    margin: 10px 0px 0px;
-    line-height: 45px;
-    letter-spacing: 4px;
-}
-
 .like-button {
     border: none;
     background-color: rgb(49, 0, 128);
@@ -128,4 +113,149 @@ h2 {
     content: 20px;
 
 
+}
+
+.posts-section {
+    position: relative;
+    margin: 0 auto;
+    padding: 1em 0 4em;
+    max-width: 1000px;
+    list-style: none;
+
+}
+
+/* post-list */
+/* Common style */
+.posts-section .post-list {
+    position: relative;
+
+    overflow: hidden;
+    margin: 10px 1%;
+    min-width: 320px;
+    max-width: 480px;
+    max-height: 360px;
+    width: 48%;
+
+    text-align: center;
+    cursor: pointer;
+}
+
+/*  */
+.posts-section .post-list img {
+    position: relative;
+
+    min-height: 100%;
+    max-width: 100%;
+    opacity: 0.8;
+}
+
+.posts-section .post-list .info-card {
+    padding: 2em;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.posts-section .post-list .info-card::before,
+.posts-section .post-list .info-card::after {
+    pointer-events: none;
+}
+
+.posts-section .post-list .info-card,
+.posts-section .post-list .info-card>a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.posts-section .post-list .info-card>a {
+    z-index: 1000;
+    text-indent: 200%;
+    white-space: nowrap;
+    font-size: 0;
+    opacity: 0;
+}
+
+.posts-section .post-list h2 {
+    word-spacing: -0.15em;
+    font-weight: 300;
+}
+
+.posts-section .post-list h2 span {
+    font-weight: 800;
+}
+
+.posts-section .post-list h2,
+.posts-section .post-list p {
+    margin: 0;
+}
+
+.posts-section .post-list p {
+    letter-spacing: 1px;
+    font-size: 68.5%;
+}
+
+
+
+div.post-list img {
+    -webkit-transition: opacity 0.35s;
+    transition: opacity 0.35s;
+}
+
+div.post-list:hover img {
+    opacity: 0.4;
+}
+
+div.post-list .info-card::after {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    left: 30px;
+    height: -webkit-calc(50% - 30px);
+    height: calc(50% - 30px);
+    border: 7px solid #fff;
+    content: '';
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+}
+
+div.post-list:hover .info-card::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+div.post-list .info-card {
+    padding: 3em;
+
+}
+
+div.post-list p {
+    position: absolute;
+    right: 60px;
+    bottom: 60px;
+    left: 60px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: translate3d(0, -100px, 0);
+    transform: translate3d(0, -100px, 0);
+}
+
+div.post-list:hover p {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+section.posts-section {
+    display: flex !important;
+    flex-direction: row;
 }

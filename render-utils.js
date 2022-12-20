@@ -41,8 +41,9 @@ export function renderProfile(profile) {
 export function renderPost(postObject, profile) {
     const div = document.createElement('div');
     const img = document.createElement('img');
-    const p = document.createElement('p');
+    const h2 = document.createElement('h2');
     const p1 = document.createElement('p');
+    const div2 = document.createElement('div');
     const deleteButton = document.createElement('button');
     if (postObject.profile_id === profile.data.id) {
         deleteButton.classList.add('delete-button');
@@ -52,12 +53,13 @@ export function renderPost(postObject, profile) {
 
     div.classList.add('post-list');
     img.classList.add('naturepic');
-    p.classList.add('location');
+    div2.classList.add('info-card');
+    h2.classList.add('location');
     p1.classList.add('description');
 
     img.src = postObject.naturepic_url;
     img.alt = '';
-    p.textContent = postObject.location;
+    h2.textContent = postObject.location;
     p1.textContent = postObject.description;
     deleteButton.textContent = 'Delete Post';
 
@@ -77,6 +79,7 @@ export function renderPost(postObject, profile) {
         }
     });
 
-    div.append(img, p, p1, deleteButton);
+    div2.prepend(h2, p1);
+    div.append(img, div2, deleteButton);
     return div;
 }
