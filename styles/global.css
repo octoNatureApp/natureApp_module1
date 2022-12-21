@@ -55,6 +55,26 @@
 }
 
 
+
+
+.left-nav .profile-icon {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.left-nav:hover .profile-icon {
+    visibility: visible;
+}
+
 main {
     padding: 20px;
     background: linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)), url('../assets/pdx6.jpeg');
