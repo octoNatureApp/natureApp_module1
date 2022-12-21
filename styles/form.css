@@ -56,19 +56,24 @@ body {
 .quote {
     font-size: 30px;
     font-weight: bold;
-    line-height: 1;
+    line-height: 2;
     text-align: center;
-    opacity: 1;
-    color: #46a54e;
+    margin-top: 70px;
+    text-decoration: solid;
+    text-decoration-color: antiquewhite;
+    text-decoration-line: underline;
+
+    color: #24b424;
 }
 
 
-form h1 {
+
+/* form h1 {
 
     font-size: 28px;
     color: black;
     animation: color-change 7s ease-in-out infinite;
-}
+} */
 
 .header>h1 {
     margin: 0;
@@ -181,6 +186,15 @@ form h1 {
     }
 }
 
+@keyframes color-change {
+    0% {
+        color: #dbcccc;
+    }
+
+    100% {
+        color: #8faab3;
+    }
+}
 
 
 
