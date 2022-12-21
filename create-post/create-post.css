@@ -108,7 +108,7 @@ Form h2 {
 
 
 
-form input,
+input,
 form textarea,
 form select,
 form button {
@@ -129,13 +129,13 @@ label {
     font-weight: 100;
 }
 
-form input[type='file'] {
+input[type='file'] {
     padding: 0;
     border: none;
 }
 
-form select:invalid,
-form *::placeholder {
+section select:invalid,
+section *::placeholder {
     color: var(--placeholder-color);
     font-weight: bolder;
 }
@@ -152,7 +152,7 @@ textarea {
 }
 
 
-button {
+form button {
 
     font-size: 18px;
     color: rgb(255, 255, 255);
@@ -164,7 +164,7 @@ button {
     font-weight: bolder;
 }
 
-button:hover {
+form button:hover {
     background: none;
     padding: 10px 80px;
     color: black;
