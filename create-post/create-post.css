@@ -95,13 +95,13 @@ section {
     box-shadow: 10px 10px 8px 7px #000000bf;
 }
 
-Form {
+form {
     width: 80%;
     /* padding: 30px 0; */
     transition: 0.2s;
 }
 
-Form h2 {
+form h2 {
     font-weight: 300;
     text-align: center;
 }
@@ -109,9 +109,9 @@ Form h2 {
 
 
 input,
-form textarea,
-form select,
-form button {
+section textarea,
+section select,
+section button {
     width: 100%;
     font-size: 1.15em;
     padding: 8px 16px;
