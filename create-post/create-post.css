@@ -79,25 +79,10 @@ section {
 
 
 
-.image-info {
-    width: 55%;
-    padding: 30px 0;
-    border-right: 5px solid rgba(30, 30, 30, .8);
-
-}
-
-#preview {
-    height: 500px;
-    object-fit: fill;
-    max-width: 100%;
-    max-height: 100%;
-    opacity: 1;
-    box-shadow: 10px 10px 8px 7px #000000bf;
-}
 
 form {
     width: 80%;
-    /* padding: 30px 0; */
+
     transition: 0.2s;
 }
 
@@ -138,6 +123,22 @@ section select:invalid,
 section *::placeholder {
     color: var(--placeholder-color);
     font-weight: bolder;
+}
+
+.image-info {
+    width: 55%;
+    padding: 30px 0;
+    border-right: 5px solid rgba(30, 30, 30, .8);
+
+}
+
+#preview {
+    height: 500px;
+    object-fit: fill;
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 1;
+    box-shadow: 10px 10px 8px 7px #000000bf;
 }
 
 .noBullet {

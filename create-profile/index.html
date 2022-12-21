@@ -42,20 +42,18 @@
     <main>
         <section class="profile-form">
             <div class="image-info" id="profile-form">
+
                 <input type="file" name="avatar" placeholder="upload a file" />
 
                 <img id="preview" class="avatar-preview" alt="avatar preview" src="/assets/avatar.png" />
+
             </div>
             <form>
                 <h2>Edit Profile</h2>
-                <label>
-                    Username
-                    <input name="username" minlength="3" required placeholder="Choose a username" />
-                </label>
-                <label>
-                    Headline
-                    <input name="headline" type="text" maxlength="60" required placeholder="max count 60" />
-                </label>
+                <input name="username" minlength="3" required placeholder="Choose a username" />
+
+                <input name="headline" type="text" maxlength="60" required placeholder="Headline" />
+
                 <button type="submit">Update Profile</button>
                 <p id="error-display"></p>
             </form>
