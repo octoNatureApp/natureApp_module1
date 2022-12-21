@@ -125,6 +125,7 @@ form button {
 
 label {
     text-align: center;
+    font-weight: 100;
 }
 
 form input[type='file'] {
@@ -135,24 +136,38 @@ form input[type='file'] {
 form select:invalid,
 form *::placeholder {
     color: var(--placeholder-color);
+    font-weight: bolder;
 }
 
-ul {
+.noBullet {
     list-style-type: none;
     padding: 0;
 }
 
+textarea {
+    background: none;
+    font-weight: 300;
+    color: white;
+}
+
+
 button {
 
     font-size: 18px;
-    color: white;
+    color: rgb(255, 255, 255);
     margin-top: 20px;
     padding: 10px 50px;
     cursor: pointer;
     transition: 0.4s;
+    background: #46a54e;
+    font-weight: bolder;
 }
 
 button:hover {
-    background: rgba(20, 20, 20, .8);
+    background: none;
     padding: 10px 80px;
+    color: black;
+    font-size: 20px;
+    font-weight: bolder;
+
 }
