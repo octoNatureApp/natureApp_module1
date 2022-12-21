@@ -47,38 +47,50 @@
         </nav>
     </header>
 
-    <main class="create-post">
-        <section class="image"> <input required type="file" name="nature" placeholder="upload an image" />
+    <main class="post-container">
 
-            <img id="preview" class="nature" alt="photo preview" src="/assets/nature place holder.png" />
-        </section>
-        <form id="create-post-form">
-            <h2>Create Post!</h2>
-            <ul class="noBullet">
-                <li>
-                    <label>Alt-Text</label>
-                    <textarea required name="alt-text" id="alt-text" placeholder="add alternative text"></textarea>
-                </li>
-                <li>
-                    <label>
-                        Location
+        <section class="create-post">
+
+            <div class="image-info">
+
+
+                <input required type="file" name="nature" placeholder="upload an image" />
+
+                <img id="preview" class="nature" alt="photo preview" src="/assets/nature place holder.png" />
+            </div>
+            <form id="create-post-form">
+                <h2>Create Post!</h2>
+                <ul class="noBullet">
+                    <li>
+
+                        <label>
+                            Alt Text
+                        </label>
+                        <textarea required name="alt-text" id="alt-text" placeholder="add alternative text"></textarea>
+                    </li>
+
+                    <li>
+                        <label>
+                            Location
+                        </label>
                         <textarea name="location" required placeholder="Add the location"></textarea>
-                    </label>
-                </li>
-                <li>
+                    </li>
 
-                    <label>
-                        Description
-                        <textarea required name="description" id="description" minlength="5" maxlength="100" cols="30"
-                            rows="10" placeholder="Add a description"></textarea>
-                    </label>
-                </li>
-                <li>
+                    <li>
+                        <label> Description</label>
 
-                    <button type="submit">POST</button>
-                </li>
-            </ul>
-        </form>
+                        <textarea required name="description" id="description"
+                            placeholder="Add a description"></textarea>
+
+                    </li>
+
+                    <li>
+
+                        <button type="submit">POST</button>
+                    </li>
+                </ul>
+            </form>
+        </section>
         <p id="error-display"></p>
     </main>
 </body>

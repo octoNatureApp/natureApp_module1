@@ -38,108 +38,121 @@
 }
 
 /* create post */
+/* form:not(.inline) {
+    width: 100%;
+    margin: 10% auto;
+    max-width: 500px;
+    background: white;
+    padding: 20px 40px 56px;
+    display: grid;
+    gap: 16px;
+    border-radius: 4px;
+} */
 
 body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-
+    height: 100vh;
+    color: var(--text-color);
+    background: #f4e0cb;
 }
 
 main {
 
+    height: 100%;
+}
+
+section {
+
+    display: flex !important;
+}
+
+.create-post {
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 800px;
-    height: 450px;
-    text-align: center;
-    display: flex;
+    height: 500px;
 
     box-shadow: 3px 10px 20px 5px rgba(0, 0, 0, .5);
+    overflow: hidden;
 }
 
-.info {
-    width: 45%;
-    background: rgba(20, 20, 20, .8);
+
+
+.image-info {
+    width: 55%;
     padding: 30px 0;
     border-right: 5px solid rgba(30, 30, 30, .8);
 
-    h2 {
-        padding-top: 30px;
-        font-weight: 300;
-    }
-
-    p {
-        font-size: 18px;
-    }
-
-    .icon {
-        font-size: 8em;
-        padding: 20px 0;
-        color: rgba(10, 180, 180, 1);
-    }
 }
 
-.signupForm {
-    width: 70%;
-    padding: 30px 0;
-    background: rgba(20, 40, 40, .8);
-    transition: .2s;
-
-    h2 {
-        font-weight: 300;
-    }
+#preview {
+    height: 600px;
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 1;
+    box-shadow: 10px 10px 8px 7px #000000bf;
 }
 
-.inputFields {
-    margin: 15px 0;
-    font-size: 16px;
-    padding: 10px;
-    width: 250px;
-    border: 1px solid rgba(10, 180, 180, 1);
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    background: rgba(20, 20, 20, .2);
-    color: white;
-    outline: none;
+Form {
+    width: 80%;
+    /* padding: 30px 0; */
+    transition: 0.2s;
 }
 
-.noBullet {
+Form h2 {
+    font-weight: 300;
+    text-align: center;
+}
+
+
+
+form input,
+form textarea,
+form select,
+form button {
+    width: 100%;
+    font-size: 1.15em;
+    padding: 8px 16px;
+    border-radius: 4px;
+    /* border: 1px solid grey; */
+    text-align: center;
+    opacity: 1;
+
+}
+
+
+
+label {
+    text-align: center;
+}
+
+form input[type='file'] {
+    padding: 0;
+    border: none;
+}
+
+form select:invalid,
+form *::placeholder {
+    color: var(--placeholder-color);
+}
+
+ul {
     list-style-type: none;
     padding: 0;
 }
 
-#join-btn {
-    border: 1px solid rgba(10, 180, 180, 1);
-    background: rgba(20, 20, 20, .6);
+button {
+
     font-size: 18px;
     color: white;
     margin-top: 20px;
     padding: 10px 50px;
     cursor: pointer;
-    transition: .4s;
-
-    &:hover {
-        background: rgba(20, 20, 20, .8);
-        padding: 10px 80px;
-    }
+    transition: 0.4s;
 }
 
-
-
-
-
-
-form button:disabled {
-    opacity: 0.5;
-}
-
-#preview {
-    height: 600px;
-    max-width: 300px;
-    max-height: 300px;
-    opacity: 1;
-    box-shadow: 10px 10px 8px 7px #000000bf;
+button:hover {
+    background: rgba(20, 20, 20, .8);
+    padding: 10px 80px;
 }
