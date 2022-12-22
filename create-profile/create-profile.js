@@ -84,7 +84,7 @@ profileForm.addEventListener('submit', async (e) => {
         updateButton.textContent = 'Update Profile';
     } else {
         // STRETCH: send to their profile
-        alert('Your profile information has been successfully updated');
+        prompt('Your profile information has been successfully updated.');
         location.assign(`/profile-feed/?id=${profiles.data.id}`);
     }
 
