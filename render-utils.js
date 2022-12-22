@@ -87,32 +87,3 @@ export function renderPost(postObject, profile) {
     div.append(img, div2, deleteButton);
     return div;
 }
-
-export function mouseOver() {
-    const editProfileIcon = document.querySelector('.edit-profile-icon');
-    const postIcon = document.querySelector('.post-icon');
-    const signOutIcon = document.querySelector('#sign-out-link');
-    const homeIcon = document.querySelector('.home-icon');
-    const nativeLand = document.querySelector('#native-land');
-    const myProfile = document.querySelector('.my-profile');
-    const team = document.querySelector('#team');
-    const location = document.querySelector('.location');
-
-
-    editProfileIcon.textContent = 'Edit-Profile';
-    postIcon.textContent = 'Create Post';
-    signOutIcon.textContent = 'Sign-Out';
-    homeIcon.textContent = 'Return to Homepage';
-    nativeLand.textContent = 'Learn more about the indigenous communities and land through this interactive website!';
-    myProfile.textContent = 'My Profile';
-    team.textContent = 'Meet the Team!';
-    location.textContent = 'Add the name of the indigenous community or communities who inhabited and continue to inhabit the areas from the images you are sharing and exploring';
-
-
-
-
-
-
-
-
-}
