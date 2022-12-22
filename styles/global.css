@@ -223,7 +223,7 @@ a {
     margin: 0;
     z-index: .5;
     object-fit: cover;
-    filter: grayscale(1);
+    filter: contrast(1);
     transition: filter 200ms ease, transform 250ms linear;
 
 
@@ -283,6 +283,6 @@ a {
 
 .profile-container:hover img,
 .profile-container:focus img {
-    filter: grayscale(0);
+
     transform: scale(1.05) rotate(1deg);
 }
