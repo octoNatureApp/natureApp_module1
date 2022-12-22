@@ -33,13 +33,15 @@
 
     <header class="page-header">
         <nav class="left-nav">
-            <a href="./create-profile/"><img src="./assets/edit-icon.png" /></a>
-            <a href="../create-post/"><img src="../assets/create-icon.png" /></a>
-            <a id="profile-feed-link"><img src="./assets/user-white-icon.png" /></a>
+            <a onmouseover="mouseOver(editProfileIcon)" href="./create-profile/"><img
+                    src="./assets/edit-icon.png" /></a>
+            <a onmouseover="mouseOver(postIcon)" href="../create-post/"><img src="../assets/create-icon.png" /></a>
+            <a onmouseover="mouseOver(myProfile)" id="profile-feed-link"><img src="./assets/user-white-icon.png" /></a>
         </nav>
         <nav class="right-nav">
-            <a id="sign-out-link" href="auth"><img src="./assets/logout-white-icon.png" /></a>
-            <a href="./team/"><img src="./assets/team-white-icon.png" /></a>
+            <a onmouseover="mouseOver(signOutIcon)" id="sign-out-link" href="auth"><img
+                    src="./assets/logout-white-icon.png" /></a>
+            <a onmouseover="mouseOver('Meet the Team!')" href="./team/"><img src="./assets/team-white-icon.png" /></a>
         </nav>
     </header>
 
