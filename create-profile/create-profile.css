@@ -80,27 +80,31 @@ form h2 {
 
 input,
 section select {
-    width: 100%;
+    width: 75%;
     font-size: 1.15em;
     padding: 8px 16px;
     border-radius: 4px;
-
+    color: white;
     text-align: center;
     opacity: 1;
     border: 1px solid #46a54e;
     border-top: none;
 
     background: none;
-
-
+    margin-top: 50px;
+    justify-content: center;
+    margin-left: 60px;
 
 }
 
 input[type='file'] {
     padding: 0;
     border: none;
+    text-align: start;
 
 }
+
+
 
 section select:invalid,
 section *::placeholder {
@@ -129,12 +133,12 @@ form button {
     transition: 0.4s;
     background: #46a54e;
     font-weight: bolder;
-    align-items: center;
-    align-content: center;
+
     border-radius: 4px;
+    margin-left: 120px;
 }
 
-button:disabled {
+form button:disabled {
     opacity: 0.5;
 }
 
@@ -148,14 +152,16 @@ button:disabled {
     border: 1px solid;
     border-radius: 24px;
     opacity: 1;
+    margin-left: 100px;
 
-    /* box-shadow: 10px 10px 8px 7px #000000bf; */
+
+    box-shadow: 10px 10px 8px 7px #000000bf;
 }
 
 form button:hover {
     background: none;
-    padding: 10px 80px;
-    color: black;
+    /* padding: 10px 80px; */
+    color: white;
     font-size: 20px;
     font-weight: bolder;
 

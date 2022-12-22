@@ -51,9 +51,10 @@
             </div>
             <form>
                 <h2>Edit Profile</h2>
-                <input name="username" minlength="3" required placeholder="Choose a username" />
+                <input name="username" minlength="3" required placeholder="Username" />
 
-                <input name="headline" type="text" maxlength="60" required placeholder="Headline" />
+                <input title="max content 60 characters" name="headline" type="text" maxlength="60" required
+                    placeholder="Headline" />
 
                 <button type="submit">Update Profile</button>
                 <p id="error-display"></p>
