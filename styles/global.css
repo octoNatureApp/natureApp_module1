@@ -243,7 +243,7 @@ a {
     margin: 0;
     z-index: .5;
     object-fit: cover;
-    filter: contrast(1);
+
     transition: filter 200ms ease, transform 250ms linear;
 
 
@@ -262,12 +262,23 @@ a {
     font-weight: 900;
     letter-spacing: 0.03ch;
     transition: 300ms transform ease;
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: 2px 4px 4px rgba(46, 91, 173, 0.6);
+    text-transform: uppercase;
 }
 
 .profile-container p {
     font-size: 1.2rem;
     font-weight: 500;
+    text-align: center;
+    background: #46a54e;
+    text-transform: uppercase;
+    opacity: 1;
+
 }
+
+
 
 .profile-container p {
     opacity: 0;
@@ -283,8 +294,8 @@ a {
     outline-offset: -0.5rem;
 }
 
-.profile-container:hover :is(h2, p),
-.profile-container:focus :is(h2, p) {
+.profile-container:hover :is(p),
+.profile-container:focus :is(p) {
     transform: none;
 }
 

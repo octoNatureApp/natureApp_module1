@@ -10,13 +10,15 @@ export function renderProfile(profile) {
     // avatar
     const img2 = document.createElement('img');
     // username
+    const h2 = document.createElement('h2');
     const p = document.createElement('p');
 
     // class lists
     a.classList.add('profile-container');
     img.classList.add('polaroid');
     img2.classList.add('avatar');
-    p.classList.add('username');
+    h2.classList.add('username');
+    p.classList.add('headline');
 
     // images
     // polaroid photo
@@ -28,11 +30,12 @@ export function renderProfile(profile) {
     img2.alt = 'avatar';
 
     // text content
-    p.textContent = `${profile.username}`;
+    h2.textContent = `${profile.username}`;
+    p.textContent = `${profile.headline}`;
     a.href = `../profile-feed/?id=${profile.id}`;
 
     // append
-    a.append(img2, p);
+    a.append(img2, h2, p);
 
     // return
     return a;
@@ -86,3 +89,4 @@ export function renderPost(postObject, profile) {
     div.append(img, div2, deleteButton);
     return div;
 }
+
