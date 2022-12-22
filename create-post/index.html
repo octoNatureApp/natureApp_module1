@@ -35,16 +35,15 @@
         <p class="title" style="color: white">Create your post!</p>
 
         <nav class="left-nav">
-            <p id="site-description"><a class="title" style="color: white" id="native-land"
-                    href="https://www.Native-Land.ca/"> Native-Land.Ca
-                </a>
-            </p>
-            <a href="../"><img src="../assets/home-icon.png" /></a>
-            <a href="../create-profile/"><img src="../assets/edit-icon.png" /></a>
+            <a title=(nativeLand)" class="title" style="color: white" id="native-land"
+                href="https://www.Native-Land.ca/"> Native-Land.Ca
+            </a>
+
+            <a title='Home' href="../"><img src="../assets/home-icon.png" /></a>
+            <a title='Edit Profile' href="../create-profile/"><img src="../assets/edit-icon.png" /></a>
         </nav>
         <nav class="right-nav">
-            <a onmouseover="mouseOver('Sign Out')" id="sign-out-link" href="../auth/"><img
-                    src="../assets/logout-white-icon.png" /></a>
+            <a title='Sign Out' id="sign-out-link" href="../auth/"><img src="../assets/logout-white-icon.png" /></a>
         </nav>
     </header>
 
@@ -74,8 +73,8 @@
                         <label>
                             Location
                         </label>
-                        <textarea onmouseover="mouseOver(location)" name="location" required
-                            placeholder="Add the location"></textarea>
+                        <textarea title=(location)" name="location" required placeholder="Add the location">
+                            </textarea>
                     </li>
 
                     <li>
