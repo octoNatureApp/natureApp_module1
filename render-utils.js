@@ -38,8 +38,7 @@ export function renderProfile(profile) {
     return a;
 }
 
-let hover = null;
-const hoverNavEl = 
+
 
 
 export function renderPost(postObject, profile) {
