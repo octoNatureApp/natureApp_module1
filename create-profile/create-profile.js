@@ -3,6 +3,7 @@
 import { checkAuth, getProfile, getUser, uploadImage, upsertProfile } from '../fetch-utils.js';
 // this will check if we have a user and set signout link if it exists
 import '../auth/user.js';
+import { displayPosts } from '../profile-feed/profile-feed.js';
 
 // get DOM elements
 
@@ -23,24 +24,7 @@ const user = getUser();
 // events
 // page load event listener
 window.addEventListener('load', async () => {
-    const response = await getProfile(user.id);
-    error = response.error;
-    profile = response.data;
 
-    if (error) {
-        alert(`There was an error:${error.message}`);
-    } else {
-        if (profile) {
-            userNameInput.value = profile.username;
-            if (profile.avatar_url) {
-                preview.src = profile.avatar_url;
-            }
-            if (profile.headline) {
-                headlineInput.value = profile.headline;
-            }
-        }
-    }
-    profileForm.reset();
 });
 
 // profile form submit button event listener
