@@ -38,16 +38,7 @@
 }
 
 /* create post */
-/* form:not(.inline) {
-    width: 100%;
-    margin: 10% auto;
-    max-width: 500px;
-    background: white;
-    padding: 20px 40px 56px;
-    display: grid;
-    gap: 16px;
-    border-radius: 4px;
-} */
+
 
 body {
     height: 100vh;
@@ -60,7 +51,7 @@ main {
     height: 100%;
 }
 
-section {
+form {
 
     display: flex !important;
 }
@@ -80,13 +71,13 @@ section {
 
 
 
-form {
+section {
     width: 80%;
 
     transition: 0.2s;
 }
 
-form h2 {
+section h2 {
     font-weight: 300;
     text-align: center;
 }
@@ -94,9 +85,9 @@ form h2 {
 
 
 input,
-section textarea,
-section select,
-section button {
+form textarea,
+form select,
+form button {
     width: 100%;
     font-size: 1.15em;
     padding: 8px 16px;
@@ -119,8 +110,8 @@ input[type='file'] {
     border: none;
 }
 
-section select:invalid,
-section *::placeholder {
+form select:invalid,
+form *::placeholder {
     color: var(--placeholder-color);
     font-weight: bolder;
 }
@@ -153,7 +144,7 @@ textarea {
 }
 
 
-form button {
+section button {
 
     font-size: 18px;
     color: rgb(255, 255, 255);
@@ -165,7 +156,7 @@ form button {
     font-weight: bolder;
 }
 
-form button:hover {
+section button:hover {
     background: none;
     padding: 10px 80px;
     color: black;

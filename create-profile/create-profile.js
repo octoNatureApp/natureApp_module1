@@ -24,7 +24,24 @@ const user = getUser();
 // events
 // page load event listener
 window.addEventListener('load', async () => {
+    const response = await getProfile(user.id);
+    error = response.error;
+    profile = response.data;
 
+    if (error) {
+        alert(`There was an error:${error.message}`);
+    } else {
+        if (profile) {
+            userNameInput.value = profile.username;
+            if (profile.avatar_url) {
+                preview.src = profile.avatar_url;
+            }
+            if (profile.headline) {
+                headlineInput.value = profile.headline;
+            }
+        }
+    }
+    profileForm.reset();
 });
 
 // profile form submit button event listener
@@ -68,7 +85,7 @@ profileForm.addEventListener('submit', async (e) => {
         updateButton.textContent = 'Update Profile';
     } else {
         // STRETCH: send to their profile
-        prompt('Your profile information has been successfully updated.');
+        alert('Your profile information has been successfully updated.');
         location.assign(`/profile-feed/?id=${profiles.data.id}`);
     }
 

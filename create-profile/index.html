@@ -40,7 +40,7 @@
             <a title='Sign Out' id="sign-out-link" href="../auth/"><img src="../assets/logout-white-icon.png" /></a>
         </nav>
     </header>
-    <main>
+    <main class="profile-container">
         <section class="profile-form">
             <div class="image-info" id="profile-form">
 
@@ -48,17 +48,18 @@
 
                 <img id="preview" class="avatar-preview" alt="avatar preview" src="/assets/avatar.png" />
 
-            </div>
-            <form>
-                <h2>Edit Profile</h2>
-                <input name="username" minlength="3" required placeholder="Username" />
 
-                <input title="max content 60 characters" name="headline" type="text" maxlength="60" required
-                    placeholder="Headline" />
+                <div class="input">
+                    <h2>Edit Profile</h2>
+                    <input name="username" minlength="3" required placeholder="Username" />
 
-                <button type="submit">Update Profile</button>
-                <p id="error-display"></p>
-            </form>
+                    <input title="max content 60 characters" name="headline" type="text" maxlength="60" required
+                        placeholder="Headline" />
+
+                    <button type="submit">Update Profile</button>
+                    <p id="error-display"></p>
+                </div>
+                </form>
         </section>
     </main>
 </body>

@@ -47,18 +47,18 @@
         </nav>
     </header>
 
-    <main class="post-container">
+    <main>
 
-        <section class="create-post">
+        <form id="create-post-form">
 
-            <div class="image-info" id="create-post-form">
+            <div class="image-info" class="create-post">
 
 
                 <input required type="file" name="nature" placeholder="upload an image" />
 
                 <img id="preview" class="nature" alt="photo-preview" src="/assets/nature place holder.png" />
             </div>
-            <form>
+            <section>
                 <h2>Create Post!</h2>
                 <ul class="noBullet">
                     <li>
@@ -90,8 +90,8 @@
                         <button type="submit">POST</button>
                     </li>
                 </ul>
-            </form>
-        </section>
+            </section>
+        </form>
         <p id="error-display"></p>
     </main>
 </body>
