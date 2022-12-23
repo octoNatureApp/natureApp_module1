@@ -4,7 +4,11 @@ const SUPABASE_KEY =
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 /* Auth related functions */
+export function checkAuth() {
+    const user = getUser();
 
+    if (!user) location.replace('/auth');
+}
 export function getUser() {
     return client.auth.user();
 }
@@ -84,13 +88,12 @@ export async function uploadNaturePic(imagePath, imageFile) {
 
 export async function getProfile(user_id) {
     const response = await client.from('profiles').select('*').match({ user_id }).maybeSingle();
-    console.log(response);
+
     if (!response) {
         return null;
     } else {
         return response;
     }
-
 }
 
 export async function getProfileById(id) {
@@ -110,9 +113,7 @@ export async function deletePost(id) {
 }
 
 export function redirectIfNoProfile() {
-
     location.replace('../create-profile');
-
 }
 
 export async function profileLikes(id) {
@@ -137,5 +138,6 @@ export async function searchByUsername(username) {
 
 // error handling
 function checkError(response) {
+    // eslint-disable-next-line no-console
     return response.error ? console.error(response.error) : response.data;
 }

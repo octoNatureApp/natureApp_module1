@@ -1,6 +1,6 @@
 // imports
 
-import { getProfile, getUser, uploadImage, upsertProfile } from '../fetch-utils.js';
+import { checkAuth, getProfile, getUser, uploadImage, upsertProfile } from '../fetch-utils.js';
 // this will check if we have a user and set signout link if it exists
 import '../auth/user.js';
 
@@ -13,7 +13,7 @@ const userNameInput = profileForm.querySelector('[name=username]');
 const avatarInput = profileForm.querySelector('[name=avatar]');
 const headlineInput = profileForm.querySelector('[name=headline]');
 const signOutLink = document.getElementById('sign-out-link');
-
+checkAuth();
 // state
 let error = null;
 let profile = null;
@@ -28,7 +28,7 @@ window.addEventListener('load', async () => {
     profile = response.data;
 
     if (error) {
-        errorDisplay.textContent = `There was an error: ${error.message}`;
+        alert(`There was an error:${error.message}`);
     } else {
         if (profile) {
             userNameInput.value = profile.username;
@@ -40,6 +40,7 @@ window.addEventListener('load', async () => {
             }
         }
     }
+    profileForm.reset();
 });
 
 // profile form submit button event listener
@@ -67,19 +68,27 @@ profileForm.addEventListener('submit', async (e) => {
         profileObj.avatar_url = url;
     }
 
+
+
     // upsert
     const response = await upsertProfile(profileObj);
+    const profiles = await getProfile(user.id);
+
 
     error = response.error;
 
+
     if (error) {
-        errorDisplay.textContent = `There was an error: ${error.message}`;
+        alert(` There was an error: ${error.message}`);
         updateButton.disabled = false;
         updateButton.textContent = 'Update Profile';
     } else {
         // STRETCH: send to their profile
-        location.assign('/');
+        alert('Your profile information has been successfully updated');
+        location.assign(`/profile-feed/?id=${profiles.data.id}`);
     }
+
+
 });
 
 // avatar preview and update

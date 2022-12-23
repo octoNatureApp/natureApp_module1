@@ -5,12 +5,14 @@ body {
     display: grid;
     grid-template-rows: auto 1fr;
 }
+
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 320px;
 }
+
 .profile-info-section {
     padding: 0px;
     border-radius: 4px;
@@ -18,6 +20,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .section {
     display: flex;
     flex-direction: row;
@@ -25,6 +28,7 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 #avatar-img {
     min-height: 110px;
     min-width: 110px;
@@ -45,6 +49,7 @@ body {
     gap: 16px;
     border-radius: 0%;
 }
+
 /* .naturepic:hover {
     opacity: 0.5;
 } */
@@ -54,19 +59,39 @@ h1 {
     line-height: 45px;
     letter-spacing: 4px;
 }
+
 h2 {
     font-size: 1.3rem;
     margin: 0px;
 }
+
 .location {
     font-size: 1.3rem;
     margin: 10px 0px 0px;
     line-height: 45px;
     letter-spacing: 4px;
 }
+
 .description {
     font-size: 1.3rem;
     margin: 10px 0px 0px;
     line-height: 45px;
     letter-spacing: 4px;
+}
+
+.like-button {
+    border: none;
+    background-color: rgb(49, 0, 128);
+    color: white;
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 0.4rem;
+    max-width: 200px;
+    transition: all ease 0.3s;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    content: 20px;
+
+
 }

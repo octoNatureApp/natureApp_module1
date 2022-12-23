@@ -1,5 +1,5 @@
 import '../auth/user.js';
-import { getUser, getPosts, getProfileById, getProfile } from '../fetch-utils.js';
+import { getUser, getPosts, getProfileById, getProfile, checkAuth, profileLikes } from '../fetch-utils.js';
 import { renderPost } from '../render-utils.js';
 
 const postSectionsEl = document.querySelector('.posts-section');
@@ -7,12 +7,13 @@ const profileInfoEl = document.querySelector('.profile-info-section');
 const avatarImgEl = document.querySelector('#avatar-img');
 const usernameHeaderEl = document.querySelector('.username-header');
 const headlineHeaderEl = document.querySelector('.headline-header');
+const profileLikesEl = document.querySelector('#profile-likes');
 
 const messageFeedEl = document.querySelector('Messages-for-post');
 const params = new URLSearchParams(location.search);
 const id = params.get('id');
 const user = getUser();
-
+checkAuth();
 window.addEventListener('load', async () => {
     // error handling
     if (!id) {
@@ -23,20 +24,22 @@ window.addEventListener('load', async () => {
     }
     displayProfile();
     displayPosts();
-});
 
+});
 
 async function displayProfile() {
     const profile = await getProfileById(id);
-    const likes = await getProfile(user.id);
-    console.log('likes', likes);
+
     avatarImgEl.src = profile.avatar_url;
     usernameHeaderEl.textContent = profile.username;
     headlineHeaderEl.textContent = profile.headline;
+    profileLikesEl.textContent = '';
 
-    const profileLikes = renderLikes(profile.id);
-    headlineHeaderEl.append(profileLikes);
-    console.log(profileLikes);
+    const buttonLikes = renderLikes(profile);
+    profileLikesEl.append(buttonLikes);
+
+
+
 }
 
 export async function displayPosts() {
@@ -49,22 +52,23 @@ export async function displayPosts() {
     }
 }
 
-function renderLikes(likes) {
+function renderLikes({ likes, id }) {
     const likeButton = document.createElement('button');
-    const profileLikes = document.createElement('div');
-    const p = document.createElement('p');
+    const div = document.createElement('div');
 
-    profileLikes.classList.add('profile-Likes');
+
+    div.classList.add('profile-likes');
+    likeButton.classList.add('like-button');
     likeButton.textContent = `Likes ${likes}🍃`;
 
+    div.append(likeButton);
 
-    profileLikes.append(p, likeButton);
+
 
     likeButton.addEventListener('click', async () => {
-
         await profileLikes(id);
         await displayProfile();
     });
 
-    return profileLikes;
+    return div;
 }
