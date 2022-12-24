@@ -14,6 +14,7 @@ checkAuth();
 /* State */
 let username = [];
 // go to user table and get the user
+let headline = [];
 const user = getUser();
 /* Events */
 window.addEventListener('load', async () => {
