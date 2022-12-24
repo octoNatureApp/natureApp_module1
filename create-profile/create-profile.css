@@ -79,21 +79,15 @@ form h2 {
 
 
 input,
-section select {
-    width: 75%;
+section select,
+section button {
+    width: 100%;
     font-size: 1.15em;
     padding: 8px 16px;
     border-radius: 4px;
-    color: white;
+    /* border: 1px solid grey; */
     text-align: center;
     opacity: 1;
-    border: 1px solid #46a54e;
-    border-top: none;
-
-    background: none;
-    margin-top: 50px;
-    justify-content: center;
-    margin-left: 60px;
 
 }
 
@@ -109,6 +103,7 @@ input[type='file'] {
 section select:invalid,
 section *::placeholder {
     color: var(--placeholder-color);
+    font-weight: bolder;
 }
 
 .image-info {
@@ -138,9 +133,7 @@ form button {
     margin-left: 120px;
 }
 
-form button:disabled {
-    opacity: 0.5;
-}
+
 
 #preview {
     margin-top: 30px;
@@ -154,8 +147,8 @@ form button:disabled {
     opacity: 1;
     margin-left: 100px;
 
-
-    box-shadow: 10px 10px 8px 7px #000000bf;
+    /* 
+    box-shadow: 10px 10px 8px 7px #000000bf; */
 }
 
 form button:hover {
