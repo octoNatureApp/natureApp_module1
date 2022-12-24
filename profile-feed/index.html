@@ -28,44 +28,37 @@
     <!-- add link for page specific css -->
 </head>
 
-<body class="hovertext">
+<body>
     <header class="page-header">
         <!-- Add a span and render specific user's profile name -->
         <nav class="left-nav">
-            <a title='Return to Homepage' href="../"><img src="../assets/home-icon.png" /></a>
-            <a title='Create Post' href="../create-post/"><img src="../assets/create-icon.png" /></a>
-            <a title='Edit Profile' href="../create-profile/"><img src="../assets/edit-icon.png" /></a>
+            <a href="../"><img src="../assets/home-icon.png" /></a>
+            <a href="../create-post/"><img src="../assets/create-icon.png" /></a>
+            <a href="../create-profile/"><img src="../assets/edit-icon.png" /></a>
         </nav>
         <nav class="right-nav">
-            <a title='Sign Out' id="sign-out-link" href="../auth/"><img src="../assets/logout-white-icon.png" /></a>
+            <a id="sign-out-link" href="../auth/"><img src="../assets/logout-white-icon.png" /></a>
         </nav>
     </header>
     <!-- main class is for css -->
-    <!-- main is going to be the wrapper -->
-    <main id="outer-container">
-        <aside id="sidebar">
-            <div class="profile-info-container">
-                <img id="avatar-img" class="avatar" src="/assets/avatar.png" />
-                <h1 class="username-header"></h1>
-                <h2 class="headline-header"></h2>
-                <div id="profile-likes"></div>
-                <!-- if we create likes on profile page instead of each post -->
-                <!-- <div class="profile-popularity"></div> -->
-            </div>
-        </aside>
-        <div class="main" id="content">
-            <article class="page-content">
-                <div class="card">
-                    <section class="posts-section" id="posts-section">
+    <main class="profile-feed-page">
 
-                        <!-- location -->
-                        <!-- desctiptoin -->
+        <section class="profile-info-section">
+            <img id="avatar-img" class="avatar" src="/assets/avatar.png" />
+            <h1 class="username-header"></h1>
+            <h2 class="headline-header"></h2>
+            <div id="profile-likes"></div>
+            <!-- if we create likes on profile page instead of each post -->
+            <!-- <div class="profile-popularity"></div> -->
+        </section>
 
-                    </section>
-                </div>
-            </article>
+        <section class="posts-section">
+            <img id="post-card-img" class="post-img" src=""></img>
 
-        </div>
+        </section>
+
+
+
 
 
 

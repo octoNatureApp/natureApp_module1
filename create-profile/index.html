@@ -1,67 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-    <!-- metadata -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- title and favicon -->
+        <title>NatureApp</title>
+        <link rel="icon" type="image/x-icon" href="/assets/nature-app-favicon.png" />
 
-    <!-- title and favicon -->
-    <title>NatureApp</title>
-    <link rel="icon" type="image/x-icon" href="/assets/nature-app-favicon.png" />
+        <!-- js -->
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
+        ></script>
+        <script type="module" src="create-profile.js"></script>
 
-    <!-- js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"></script>
-    <script type="module" src="create-profile.js"></script>
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
-        rel="stylesheet" />
+        <!-- css -->
+        <link rel="stylesheet" href="/styles/reset.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <link rel="stylesheet" href="./create-profile.css" />
 
-    <!-- css -->
-    <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/global.css" />
-    <link rel="stylesheet" href="./create-profile.css" />
-
-    <!-- add link for page specific css -->
-</head>
-
-<body class="hovertext">
-    <header class="page-header">
-        <p class="title"></p>
-        <nav class="left-nav">
-            <a title='Return to homepage.'' href="../"><img src="../assets/home-icon.png" /></a>
-            <a title =' Create Post!' href="../create-post/"><img src="../assets/create-icon.png" /></a>
-        </nav>
-        <nav class="right-nav">
-            <a title='Sign Out' id="sign-out-link" href="../auth/"><img src="../assets/logout-white-icon.png" /></a>
-        </nav>
-    </header>
-    <main class="profile-container">
-        <section class="profile-form">
-            <div class="image-info" id="profile-form">
-
-                <input type="file" name="avatar" placeholder="upload a file" />
-
-                <img id="preview" class="avatar-preview" alt="avatar preview" src="/assets/avatar.png" />
-
-
-                <div class="input">
-                    <h2>Edit Profile</h2>
-                    <input name="username" minlength="3" required placeholder="Username" />
-
-                    <input title="max content 60 characters" name="headline" type="text" maxlength="60" required
-                        placeholder="Headline" />
-
-                    <button type="submit">Update Profile</button>
-                    <p id="error-display"></p>
-                </div>
-                </form>
-        </section>
-    </main>
-</body>
-
+        <!-- add link for page specific css -->
+    </head>
+    <body>
+        <header class="page-header">
+            <p class="title"></p>
+            <nav class="left-nav">
+                <a href="../"><img src="../assets/home-icon.png" /></a>
+            </nav>
+            <nav class="right-nav">
+                <a id="sign-out-link" href="../auth/"
+                    ><img src="../assets/logout-white-icon.png"
+                /></a>
+            </nav>
+        </header>
+        <main>
+            <form id="profile-form">
+                <label>
+                    <input type="file" name="avatar" placeholder="upload a file" />
+                </label>
+                <img
+                    id="preview"
+                    class="avatar-preview"
+                    alt="avatar preview"
+                    src="/assets/avatar.png"
+                />
+                <label>
+                    username
+                    <input name="username" minlength="3" required placeholder="Choose a username" />
+                </label>
+                <label>
+                    Headline
+                    <input
+                        name="headline"
+                        type="text"
+                        maxlength="60"
+                        required
+                        placeholder="max count 60"
+                    />
+                </label>
+                <button type="submit">Update Profile</button>
+                <p id="error-display"></p>
+            </form>
+        </main>
+    </body>
 </html>

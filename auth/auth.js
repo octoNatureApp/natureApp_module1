@@ -9,8 +9,7 @@ if (user) location.replace('/');
 
 /* Get DOM (getElementById and friends)*/
 const authForm = document.getElementById('auth-form');
-const authHeader = authForm.querySelector('h1');
-const authWelcome = authForm.querySelector('h2');
+const authHeader = authForm.querySelector('h2');
 const authButton = authForm.querySelector('button');
 const changeType = authForm.querySelector('a');
 const errorDisplay = authForm.querySelector('.error');
@@ -76,16 +75,11 @@ function displayAuth() {
     // set the text display on the header, button, and change type link
     if (isSignIn) {
         authHeader.textContent = 'NatureApp';
-        authWelcome.textContent = 'Welcome Back';
-        changeType.textContent = 'Need to create an account?';
         authButton.textContent = 'Sign In';
-
-
+        changeType.textContent = 'Need to create an account?';
     } else {
         authHeader.textContent = 'Create Account In NatureApp';
-        authWelcome.textContent = "Welcome! Let's explore nature together!";
-        changeType.textContent = 'Already have an account?';
         authButton.textContent = 'Sign Up';
-
+        changeType.textContent = 'Already have an account?';
     }
 }

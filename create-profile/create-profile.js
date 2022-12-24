@@ -3,17 +3,16 @@
 import { checkAuth, getProfile, getUser, uploadImage, upsertProfile } from '../fetch-utils.js';
 // this will check if we have a user and set signout link if it exists
 import '../auth/user.js';
-import { displayPosts } from '../profile-feed/profile-feed.js';
 
 // get DOM elements
-
+const errorDisplay = document.getElementById('error-display');
 const preview = document.getElementById('preview');
 const profileForm = document.getElementById('profile-form');
 const updateButton = profileForm.querySelector('button');
 const userNameInput = profileForm.querySelector('[name=username]');
 const avatarInput = profileForm.querySelector('[name=avatar]');
 const headlineInput = profileForm.querySelector('[name=headline]');
-
+const signOutLink = document.getElementById('sign-out-link');
 checkAuth();
 // state
 let error = null;
@@ -85,7 +84,7 @@ profileForm.addEventListener('submit', async (e) => {
         updateButton.textContent = 'Update Profile';
     } else {
         // STRETCH: send to their profile
-        alert('Your profile information has been successfully updated.');
+        alert('Your profile information has been successfully updated');
         location.assign(`/profile-feed/?id=${profiles.data.id}`);
     }
 

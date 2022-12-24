@@ -1,71 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-    <!-- metadata -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- title and favicon -->
+        <title>NatureApp</title>
+        <link rel="icon" type="image/x-icon" href="/assets/nature-app-favicon.png" />
 
-    <!-- title and favicon -->
-    <title>NatureApp</title>
-    <link rel="icon" type="image/x-icon" href="/assets/nature-app-favicon.png" />
+        <!-- js -->
+        <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"
+        ></script>
+        <script type="module" src="app.js"></script>
 
-    <!-- js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.7/dist/umd/supabase.min.js"></script>
-    <script type="module" src="app.js"></script>
+        <!-- fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
-        rel="stylesheet" />
+        <!-- css -->
+        <link rel="stylesheet" href="/styles/reset.css" />
+        <link rel="stylesheet" href="/styles/global.css" />
+        <!-- add link for page specific css -->
+    </head>
 
-    <!-- css -->
-    <link rel="stylesheet" href="/styles/reset.css" />
-    <link rel="stylesheet" href="/styles/global.css" />
-    <!-- add link for page specific css -->
-</head>
+    <body>
+        <header class="page-header">
+            <nav class="left-nav">
+                <a href="./create-profile/"><img src="./assets/edit-icon.png" /></a>
+                <a id="profile-feed-link"><img src="./assets/user-white-icon.png"</a>
+            </nav>
+            <nav class="right-nav">
+                <a id="sign-out-link" href="auth"><img src="./assets/logout-white-icon.png" /></a>
+                <a href="./team/"><img src="./assets/team-white-icon.png" /></a>
+            </nav>
+        </header>
 
-
-
-<body class="hovertext">
-
-    <header class="page-header">
-        <nav class="left-nav">
-            <a title="Edit Profile" href="./create-profile/"><img src="./assets/edit-icon.png" /></a>
-            <a title="Create Post" href="../create-post/"><img src="../assets/create-icon.png" /></a>
-            <a title="My Profile" id="profile-feed-link"><img src="./assets/user-white-icon.png" /></a>
-        </nav>
-        <nav class="right-nav">
-            <a title="Sign Out" id="sign-out-link" href="auth"><img src="./assets/logout-white-icon.png" /></a>
-            <a title="Meet the Team" href="./team/"><img src="./assets/team-white-icon.png" /></a>
-        </nav>
-    </header>
-
-
-
-
-    <main>
-
-        <div class="home-main-container">
-            <form class="search-bar" id="search-name-form">
-                <input name="search-input" type="text" placeholder="search by username" />
-                <button>🔍</button>
-            </form>
-        </div>
-        <div class="body">
-            <article class="flow">
-                <div class="profiles">
-                    <ul class="auto-grid" id="profiles-container"></ul>
-                </div>
-
-            </article>
-        </div>
-
-    </main>
-
-</body>
-
-
+        <main>
+            <div class="home-main-container">
+                <form class="search-bar" id="search-name-form">
+                    <input name="search-input" type="text" placeholder="search by username" />
+                    <button>🔍</button>
+                </form>
+                <ul id="profiles-container"></ul>
+            </div>
+        </main>
+    </body>
 </html>
