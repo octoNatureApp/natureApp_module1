@@ -35,38 +35,62 @@
         <p class="title" style="color: white">Create your post!</p>
 
         <nav class="left-nav">
-            <p id="site-description"><a class="title" style="color: white" id="native-land"
-                    href="https://www.Native-Land.ca/"> Native-Land.Ca
-                </a>
-            </p>
-            <a href="../"><img src="../assets/home-icon.png" /></a>
-            <a href="../create-profile/"><img src="../assets/edit-icon.png" /></a>
+            <a title=(nativeLand)" class="title" style="color: white" id="native-land"
+                href="https://www.Native-Land.ca/"> Native-Land.Ca
+            </a>
+
+            <a title='Home' href="../"><img src="../assets/home-icon.png" /></a>
+            <a title='Edit Profile' href="../create-profile/"><img src="../assets/edit-icon.png" /></a>
         </nav>
         <nav class="right-nav">
-            <a id="sign-out-link" href="../auth/"><img src="../assets/logout-white-icon.png" /></a>
+            <a title='Sign Out' id="sign-out-link" href="../auth/"><img src="../assets/logout-white-icon.png" /></a>
         </nav>
     </header>
 
     <main>
+
         <form id="create-post-form">
-            <label>
-                image
+
+            <div class="image-info" class="create-post">
+
+
                 <input required type="file" name="nature" placeholder="upload an image" />
-            </label>
-            <img id="preview" class="nature" alt="photo preview" src="/assets/nature place holder.png" />
-            <label>
-                Alt text<textarea required name="alt-text" id="alt-text" placeholder="add alternative text"></textarea>
-            </label>
-            <label>
-                Location
-                <textarea name="location" required placeholder="Add the location"></textarea>
-            </label>
-            <label>
-                Description
-                <textarea required name="description" id="description" minlength="5" maxlength="100" cols="30" rows="10"
-                    placeholder="Add a description"></textarea>
-            </label>
-            <button type="submit">POST</button>
+
+                <img id="preview" class="nature" alt="photo-preview" src="/assets/nature place holder.png" />
+            </div>
+            <section>
+                <h2>Create Post!</h2>
+                <ul class="noBullet">
+                    <li>
+
+                        <label>
+                            Alt Text
+                        </label>
+                        <textarea required name="alt-text" id="alt-text" placeholder="add alternative text"></textarea>
+                    </li>
+
+                    <li>
+                        <label>
+                            Location
+                        </label>
+                        <textarea title=(location)" name="location" required placeholder="Add the location">
+                            </textarea>
+                    </li>
+
+                    <li>
+                        <label> Description</label>
+
+                        <textarea required name="description" id="description"
+                            placeholder="Add a description"></textarea>
+
+                    </li>
+
+                    <li>
+
+                        <button type="submit">POST</button>
+                    </li>
+                </ul>
+            </section>
         </form>
         <p id="error-display"></p>
     </main>

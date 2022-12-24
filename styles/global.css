@@ -7,16 +7,44 @@
     --offset-color: rgb(217, 236, 217);
     --action-color: rgb(77, 132, 252);
 }
-* {
-    font-family: 'Roboto', sans-serif;
+
+
+
+.body div {
+    font-family: "Inter", sans-serif;
+    margin: 0 auto;
+    /* color: #241623; */
+
+    /* max-width: 55rem;
+    padding: 2rem 1.5rem; */
 }
 
-body {
-    height: 100vh;
-    color: var(--text-color);
-    background: #f4e0cb;
-    display: grid;
-    grid-template-rows: auto 1fr;
+.hovertext {
+    position: relative;
+    border-bottom: 1px dotted black;
+}
+
+.hovertext:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity: 0;
+    width: 140px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 0;
+    transition: opacity 1s ease-in-out;
+
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 110%;
+}
+
+.hovertext:hover:before {
+    opacity: 1;
+    visibility: visible;
 }
 
 .page-header {
@@ -30,8 +58,9 @@ body {
     gap: 10px;
     background: linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7));
 
-    /* background-color: #88a65a; */
-    /* box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; */
+
+    /* background-color: #88a65a;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px; */
 }
 
 .page-header .logo {
@@ -39,39 +68,56 @@ body {
 }
 
 .page-header .title {
-    font-size: 1.3em;
-    font-weight: 800;
-    flex-grow: 2;
+    font-weight: 900;
+    font-size: 2.7rem;
+    max-width: 20ch;
 }
 
 .page-header nav {
     display: flex;
     gap: 10px;
 }
+
 .page-header nav a {
     color: white;
 }
 
+
+
+
+.left-nav .profile-icon {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.left-nav:hover .profile-icon {
+    visibility: visible;
+}
+
 main {
     padding: 20px;
-    display: flex;
     background: linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.7)), url('../assets/pdx6.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: white;
+
+
 }
 
-.avatar {
-    min-height: 80px;
-    min-width: 80px;
-    height: 80px;
-    width: 80px;
-    object-fit: cover;
-    border: 1px solid var(--placeholder-color);
-    border-radius: 24px;
-}
+
+
+
 
 .error {
     color: red;
@@ -80,41 +126,194 @@ main {
 .hidden {
     display: none;
 }
-a {
-    text-decoration: none;
-}
+
+
+
 .home-main-container {
     display: flex;
     width: 100%;
     flex-direction: column;
     height: 100%;
 }
+
 .search-bar {
     display: flex;
     gap: 16px;
     margin-bottom: 16px;
 }
+
 .search-bar input {
     width: 100%;
     width: 100%;
     padding: 4px 16px;
 }
-#profiles-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    gap: 16px;
+
+
+
+p {
+    max-width: 60ch;
 }
-#profiles-container .profile-container {
-    background-color: white;
-    padding: 16px;
-    border-radius: 4px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+a {
+    color: currentcolor;
+}
+
+.profiles {
+    --flow-space: 2em;
+}
+
+/* Utilities */
+.auto-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,
+            minmax(var(--auto-grid-min-size, 14rem), 1fr));
+    grid-gap: var(--auto-grid-gap, 0);
+    padding: 0;
+}
+
+.flow>*+* {
+    margin-top: var(--flow-space, 1em);
+}
+
+
+.profile-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    aspect-ratio: 1/1;
+    position: relative;
+    padding: 1.5rem;
+
+    backface-visibility: hidden;
+    text-decoration: none;
+    overflow: hidden;
+
 }
-#profiles-container a:hover {
-    background-color: rgba(158, 181, 168, 0.5);
-    opacity: 0.5;
+
+.profile-container::before,
+.profile-container::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+}
+
+.profile-container::before {
+    background: linear-gradient(to top,
+            hsl(0 0% 0% / 0.79) 0%,
+            hsl(0 0% 0% / 0.787) 7.8%,
+            hsl(0 0% 0% / 0.779) 14.4%,
+            hsl(0 0% 0% / 0.765) 20.2%,
+            hsl(0 0% 0% / 0.744) 25.3%,
+            hsl(0 0% 0% / 0.717) 29.9%,
+            hsl(0 0% 0% / 0.683) 34.3%,
+            hsl(0 0% 0% / 0.641) 38.7%,
+            hsl(0 0% 0% / 0.592) 43.3%,
+            hsl(0 0% 0% / 0.534) 48.4%,
+            hsl(0 0% 0% / 0.468) 54.1%,
+            hsl(0 0% 0% / 0.393) 60.6%,
+            hsl(0 0% 0% / 0.31) 68.3%,
+            hsl(0 0% 0% / 0.216) 77.3%,
+            hsl(0 0% 0% / 0.113) 87.7%,
+            hsl(0 0% 0% / 0) 100%);
+    transition: 300ms opacity linear;
+}
+
+.profile-container::after {
+    background: linear-gradient(45deg,
+            hsl(5 97% 63% / 0.7) 0,
+            hsl(5 97% 63% / 0) 100%);
+    opacity: 0;
+    transition: 300ms opacity linear;
+}
+
+.profile-container>* {
+    z-index: 1;
+}
+
+.profile-container img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    z-index: .5;
+    object-fit: cover;
+
+    transition: filter 200ms ease, transform 250ms linear;
+
+
+}
+
+
+
+.profile-container h2,
+.profile-container p {
+    transform: translateY(2ex);
+}
+
+.profile-container h2 {
+    font-size: 1.7rem;
+    line-height: 1.2;
+    font-weight: 900;
+    letter-spacing: 0.03ch;
+    transition: 300ms transform ease;
+    text-align: center;
+    margin-bottom: 50px;
+    text-shadow: 2px 4px 4px rgba(46, 91, 173, 0.6);
+    text-transform: uppercase;
+}
+
+.profile-container p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    background: #46a54e;
+    text-transform: uppercase;
+    opacity: 1;
+
+}
+
+
+
+.profile-container p {
+    opacity: 0;
+    transition: 300ms opacity linear, 300ms transform ease-in-out;
+}
+
+/* .avatar img {
+    height: 100%;
+} */
+
+.profile-container:focus {
+    outline: 0.5rem solid white;
+    outline-offset: -0.5rem;
+}
+
+.profile-container:hover :is(p),
+.profile-container:focus :is(p) {
+    transform: none;
+}
+
+.profile-container:hover::after,
+.profile-container:focus::after,
+.profile-container:hover::before,
+.profile-container:focus::before {
+    opacity: 0.7;
+}
+
+.profile-container:hover p,
+.profile-container:focus p {
+    opacity: 1;
+    transition-delay: 200ms;
+}
+
+.profile-container:hover img,
+.profile-container:focus img {
+
+    transform: scale(1.05) rotate(1deg);
 }

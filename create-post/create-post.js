@@ -13,7 +13,7 @@ const natureInput = postForm.querySelector('[name=nature]');
 const altTextInput = postForm.querySelector('[name=alt-text]');
 const locationInput = postForm.querySelector('[name=location]');
 const descriptionInput = postForm.querySelector('[name=description]');
-const signOutLink = document.getElementById('sign-out-link');
+
 checkAuth();
 // events
 let error = null;
